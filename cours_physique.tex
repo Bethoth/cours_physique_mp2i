@@ -462,3 +462,28 @@ pdfauthor=Romain Bricout
 \newcommand{\note}[1]{\textbf{\(\star\star\) #1 \(\star\star\)}}
 \newcommand{\cad}{c'est-à-dire }
 \newcommand{\Cad}{C'est-à-dire }
+
+\begin{document}
+\renewcommand{\labelitemi}{\(\bullet\)}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+
+\everymath{\ds}
+
+\maketitle
+
+\begin{abstract}
+Ce document réunit l'ensemble de mes cours de Physique de MP2I. Le professeur était M. Jacob. J'ai adapté certaines formulations me paraissant floues ou ne me plaisant pas mais le contenu pur des cours est strictement équivalent. Le document est organisé selon la hiérarchie suivante : partie, chapitre, I), 1), a). Les parties sont celles du programme : thermodynamique, électricité, mécanique, ... Leur ordre dans ce document est arbitraire et ne reflète pas l'ordre de traitement des chapitres durant l'année.
+
+Les éléments des tables des matières initiale et présentes au début de chaque chapitre sont cliquables (amenant directement à la partie cliquée).
+
+Code couleur des vecteurs (et flèches en général) : \begin{itemize}
+\item noir : légendes ou mouvements ;
+\item violet : champs (par exemple le champ de pesanteur \(\vec{g}\)) ;
+\item rouge : forces ;
+\item bleu : vecteurs unitaires ;
+\item vert : vecteurs vitesses. \\
+\end{itemize}
+\end{abstract}
+
+\dominitoc\tableofcontents
+\end{document}
