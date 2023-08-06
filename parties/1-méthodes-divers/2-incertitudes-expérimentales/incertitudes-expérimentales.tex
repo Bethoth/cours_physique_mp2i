@@ -1,0 +1,209 @@
+\chapter{Incertitudes expérimentales}
+
+\minitoc
+
+La notion d'incertitude est essentielle dans la démarche expérimentale. Sans elle, on ne peut juger de la qualité d'une mesure, de sa pertinence ou de sa compatibilité avec une loi physique. On introduit ici les outils nécessaires à l'analyse des résultats expérimentaux.
+
+\section{Mesure d'une grandeur physique}
+
+Le processus d'attribution d'une valeur expérimentale à une grandeur physique s'appelle le mesurage.
+
+L'instrument de mesure fournit une valeur mesurée.
+
+La grandeur soumise au mesurage s'appelle le mesurande.
+
+Par exemple, on mesure l'intensité du courant qui circule dans un circuit électrique à l'aide d'un ampèremètre. On effectue donc le mesurage du mesurande (l'intensité du courant électrique), la valeur mesurée étant affichée par l'ampèremètre (qui se place en série dans le montage).
+
+\section{Erreur et incertitude}
+
+Beaucoup de scientifiques confondent ces deux termes et parlent de calculs d'erreurs au lieu de calculs d'incertitudes.
+
+\subsection{Erreurs -- définition de l'erreur}
+
+Lors de la mesure d'une grandeur physique \(x\), l'erreur est la différence entre la valeur mesurée \(x\) et la valeur vraie \(X\). La valeur vraie est en général inconnue (puisqu'on la cherche).
+
+\subsubsection{Erreurs aléatoires}
+
+Lorsqu'on mesure la période d'oscillation d'un pendule en opérant avec un chronomètre manuel, on constate qu'en répétant les mesures on trouve des résultats légèrement différents, dus surtout aux retards de déclenchement qui vont réduire ou accroître la valeur de la période suivant qu'ils ont eu lieu au début ou à la fin de la mesure. Ce phénomène sera détecté par une étude statistique (en effectuant un grand nombre de mesures).
+
+On parle d'erreur aléatoire.
+
+Le résultat de la mesure est caractérisé par une distribution de probabilité répartie autour de la valeur vraie dans le cas d'erreurs purement aléatoires.
+
+\subsubsection{Erreurs systématiques}
+
+Supposons maintenant qu'on mesure la période d'oscillation d'un pendule avec un chronomètre faussé qui indique toujours des temps 2\% trop faibles. Une étude statistique ne le détectera pas, on parle d'erreur systématique. C'est la composante de l'erreur qui ne varie pas dans des conditions de mesures répétées.
+
+Les erreurs systématiques sont difficiles à détecter a priori mais une fois détectées, on peut souvent les corriger.
+
+Exemple : influence de la température sur la vitesse du son (si on ne précise pas la température, il est impossible de comparer la valeur mesurée à une valeur de référence).
+
+On représente classiquement les rôles respectifs des erreurs aléatoires et systématiques par analogie avec un tir sur cible, le centre de la cible représentant la valeur vraie de la grandeur à mesurer :
+
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) circle (1);
+\draw (-1.2,-1.2) -- (1.2,-1.2) -- (1.2,1.2) -- (-1.2,1.2) -- (-1.2,-1.2);
+\node[cross=2pt,red] at (0,0) {};
+\node[cross=2pt] at (0.1,0.2) {};
+\node[cross=2pt] at (0.2,0.1) {};
+\node[cross=2pt] at (-0.15,0.1) {};
+\node[cross=2pt] at (0.15,-0.1) {};
+\node[cross=2pt] at (-0.15,-0.15) {};
+\end{tikzpicture}
+\hskip5pt
+\begin{tikzpicture}
+\draw (0,0) circle (1);
+\draw (-1.2,-1.2) -- (1.2,-1.2) -- (1.2,1.2) -- (-1.2,1.2) -- (-1.2,-1.2);
+\node[cross=2pt,red] at (0,0) {};
+\node[cross=2pt] at (0.31,0.45) {};
+\node[cross=2pt] at (0.1,0.49) {};
+\node[cross=2pt] at (-0.45,0.35) {};
+\node[cross=2pt] at (0.45,-0.41) {};
+\node[cross=2pt] at (-0.45,-0.45) {};
+\end{tikzpicture}
+\hskip5pt
+\begin{tikzpicture}
+\draw (0,0) circle (1);
+\draw (-1.2,-1.2) -- (2.4,-1.2) -- (2.4,1.2) -- (-1.2,1.2) -- (-1.2,-1.2);
+\node[cross=2pt,red] at (0,0) {};
+\node[cross=2pt] at (2.1,0.2) {};
+\node[cross=2pt] at (2.2,0.1) {};
+\node[cross=2pt] at (1.75,0.1) {};
+\node[cross=2pt] at (2.15,-0.1) {};
+\node[cross=2pt] at (1.75,-0.15) {};
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (0,0) circle (1);
+\draw (-1.2,-1.2) -- (2.6,-1.2) -- (2.6,1.2) -- (-1.2,1.2) -- (-1.2,-1.2);
+\node[cross=2pt,red] at (0,0) {};
+\node[cross=2pt] at (2.31,0.45) {};
+\node[cross=2pt] at (2.1,0.49) {};
+\node[cross=2pt] at (1.55,0.35) {};
+\node[cross=2pt] at (2.45,-0.41) {};
+\node[cross=2pt] at (1.55,-0.45) {};
+\end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+\item Si tous les impacts sont proches du centre : faibles erreurs aléatoires et faible erreur systématique.
+\item Si les impacts sont très étalés mais centrés en moyenne sur la cible : fortes erreurs aléatoires et faible erreur systématique.
+\item Si les impacts sont groupés mais loin du centre : faibles erreurs aléatoires mais forte erreur systématique.
+\item Si les impacts sont étalés et loin du centre : fortes erreurs aléatoires et forte erreur systématique. \\
+\end{itemize}
+
+Le défaut de cette analogie est qu'en général, dans les mesures physiques, on ne connaît pas le centre de la cible.
+
+\subsection{Incertitudes}
+
+L'incertitude \(\fdif{x}\) traduit les tentatives scientifiques pour estimer l'importance de l'erreur aléatoire commise. En l'absence d'erreur systématique, elle définit un intervalle de confiance autour de la valeur mesurée qui inclut la valeur vraie avec un niveau de confiance déterminé. La détermination de l'incertitude n'est pas simple a priori.
+
+On rencontre en pratique deux situations :
+
+\subsubsection{Évaluation de type A}
+
+\(\fdif{x}\) est évaluée statistiquement. On cherche dans ce cas à caractériser la distribution de probabilité des valeurs de \(x\), en évaluant le mieux possible la valeur moyenne et l'écart-type de cette distribution. Ceci se fait par l'analyse statistique d'un ensemble de mesures de \(x\).
+
+En l'absence d'erreurs systématiques, l'estimation de la valeur moyenne est la meilleure estimation de la valeur vraie \(X\) tandis que l'incertitude \(\fdif{x}\), directement reliée à l'estimation de l'écart-type de la distribution, définit un intervalle dans lequel la valeur vraie de \(x\) se trouve avec un niveau de confiance connu. On choisit le plus souvent comme incertitude l'estimation de l'écart-type de la distribution. On parle alors d'incertitude-type.
+
+\subsubsection{Évaluation de type B}
+
+\(\fdif{x}\) est évaluée par d'autres moyens. Si on ne dispose pas du temps nécessaire pour faire une série de mesures, on estime \(\fdif{x}\) à partir des spécifications des appareils de mesures et des conditions expérimentales.
+
+\subsection{Présentation d'un résultat expérimental}
+
+L'écriture rapportant la mesure d'une grandeur physique \(x\) est : \[\text{valeur mesurée de }x=\overline{x}\pm\fdif{x}\] où \begin{description}
+\item \(\overline{x}\) est la meilleure estimation de la valeur vraie \(X\)
+\item \(\fdif{x}\) est l'incertitude-type sur la mesure (incertitude absolue). \\
+\end{description}
+
+En l'absence d'erreur systématique, on considère que la valeur vraie \(X\) de \(x\) se trouve dans l'intervalle \begin{itemize}
+\item \(\intervee{\overline{x}-\fdif{x}}{\overline{x}+\fdif{x}}\) avec une probabilité de 68\% ;
+\item \(\intervee{\overline{x}-2\fdif{x}}{\overline{x}+2\fdif{x}}\) avec une probabilité de 95\% ;
+\item \(\intervee{\overline{x}-3\fdif{x}}{\overline{x}+3\fdif{x}}\) avec une probabilité de \(\num{99.7}\)\%.
+\end{itemize}
+
+\subsection{Comparaison entre valeur mesurée et valeur acceptée}
+
+Ayant obtenu la valeur mesurée avec son intervalle d'incertitude, on la compare à la valeur de référence (pour une valeur expérimentale de référence, on ne parle pas de valeur exacte mais de valeur tabulée).
+
+Il n'est pas anormal que l'intervalle ne contienne pas la valeur de référence.
+
+On commencera à douter de la qualité de la mesure lorsque l'écart entre la valeur tabulée et la valeur mesurée atteint plus de \(2\fdif{x}\).
+
+\subsection{Comparaison de deux mesures}
+
+Pour pouvoir comparer deux mesures entre elles, il faut un critère quantitatif pour indiquer si ces deux mesures sont considérées comme compatibles ou incompatibles.
+
+On définit donc l'écart normalisé \(E_N\) entre deux processus de mesure donnant les valeurs \(m_1\) et \(m_2\) et d'incertitudes-types \(u\paren{m_1}\) et \(u\paren{m_2}\) par : \[E_N=\dfrac{\abs{m_1-m_2}}{\sqrt{u\paren{m_1}^2+u\paren{m_2}^2}}.\]
+
+Par convention, on qualifie souvent deux résultats de compatibles si leur écart normalisé vérifie la propriété \(E_N<2\).
+
+\section{Évaluation de type A de l'incertitude}
+
+On s'occupe ici de la mesure d'une grandeur physique \(x\) dont les sources de variabilité sont uniquement aléatoires.
+
+Dans la pratique, on réalise un nombre fini \(n\) de mesures de résultats respectifs \(x_1,x_2,\ldots,x_n\) dont on cherche à extraire les meilleures estimations de \(X\), valeur moyenne et \(\sigma\), écart-type, de la distribution de probabilité de \(x\).
+
+\subsection{Meilleure estimation de la moyenne de la distribution des valeurs de \(x\)}
+
+La meilleure estimation de la valeur vraie \(X\), notée \(\overline{x}\), obtenue à partir des \(n\) mesures \(x_1,x_2,\ldots,x_n\) est la moyenne de ces mesures : \[\text{meilleure estimation de }X=\overline{x}=\dfrac{x_1+x_2+\ldots+x_n}{n}.\]
+
+\subsection{Meilleure estimation de l'écart-type de la distribution des valeurs de \(x\)}
+
+La meilleure estimation de \(\sigma\) déduite des \(n\) mesures \(x_1,x_2,\ldots,x_n\) notée \(\sigma_x\) est donnée par : \[\text{meilleure estimation de }\sigma=\sigma_x=\sqrt{\dfrac{1}{n-1}\sum_{i=1}^n\paren{x_i-\overline{x}}^2}.\]
+
+\subsection{Incertitude-type \(\fdif{x}\)}
+
+L'incertitude-type \(\fdif{x}\) sur la mesure de \(x\) se déduit de l'écart-type de la distribution des valeurs de \(x\), \(\sigma_x\), par : \[\fdif{x}=\dfrac{\sigma_x}{\sqrt{n}}\] où \(n\) est le nombre de mesures des valeurs de \(x\).
+
+\subsection{Bilan}
+
+Si on réalise \(n\) mesures de \(x\), avec les résultats \(x_1,x_2,\ldots,x_n\), on écrira le résultat final sous la forme : \[x=\overline{x}\pm\dfrac{\sigma_x}{\sqrt{n}}\] où \(\overline{x}\) et \(\dfrac{\sigma_x}{\sqrt{n}}\) sont les meilleures estimations de la valeur vraie et de l'incertitude-type.
+
+Exemple pratique :
+
+Huit étudiants mesurent la longueur d'onde de la raie verte du mercure et obtiennent les résultats suivants :
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+\(i\) (n° de l'étudiant) & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+\hline
+\(\lambda\) trouvée (en \(\unit{\nano\metre}\)) & \(\num{538.2}\) & \(\num{554.3}\) & \(\num{545.7}\) & \(\num{552.3}\) & \(\num{566.4}\) & \(\num{537.9}\) & \(\num{549.2}\) & \(\num{540.3}\) \\
+\hline
+\end{tabular}
+\end{center}
+
+En utilisant la calculatrice, on peut déterminer aisément \(\overline{\lambda}=\SI{548.04}{\nano\metre}\) et \(\sigma_\lambda=\SI{9.72}{\nano\metre}\).
+
+On en déduit que l'incertitude sur la moyenne des huit valeurs vaut \(\fdif{\lambda}=\dfrac{\sigma_x}{\sqrt{8}}=\dfrac{\num{9.72}}{\sqrt{8}}=\SI{3.44}{\nano\metre}\).
+
+On peut donc écrire : meilleure estimation de \(\lambda=548\pm\SI{3}{\nano\metre}\).
+
+On peut comparer à la valeur tabulée \(\lambda_\text{tab}=\SI{545.07}{\nano\metre}\) et conclure qu'il y a une bonne concordance.
+
+\section{Évaluation de type B de l'incertitude}
+
+On rappelle que l'évaluation de type B de l'incertitude est réalisée lorsqu'il est trop long ou impossible de procéder à une évaluation de type A. Une connaissance générale de l'expérience est nécessaire pour rechercher et évaluer les sources d'erreurs.
+
+L'évaluation de type B de l'incertitude d'une mesure effectuée sur un instrument de précision \(\Delta\) est : \[\fdif{x}=\dfrac{\Delta}{\sqrt{3}}.\]
+
+On retiendra que : \begin{itemize}
+\item la précision des instruments de mesure gradués est égale à une demi-graduation ;
+\item la précision des autres instruments notamment numériques est à chercher sur la notice de l'instrument ;
+\item la précision de la méthode de mesure est à déterminer expérimentalement. \\
+\end{itemize}
+
+Exemples : \begin{itemize}
+\item sur une règle graduée au \(\unit{\milli\metre}\), la précision vaut \(\Delta=\SI{0.5}{\milli\metre}\) ;
+\item sur la notice d'un multimètre numérique utilisé en DC sur le calibre \(\SI{5}{\volt}\), on lit \guillemets{\foreignlanguage{british}{Accuracy: \(\num{0.3}\)\% rdg + 2 digits}}. La précision de l'appareil est donc de \(\num{0.3}\)\% de la valeur lue (rdg signifie \foreignlanguage{british}{reading}) à laquelle on ajoute deux fois la valeur du dernier chiffre affiché.
+
+Pour une valeur lue de \(\SI{2.5462}{\volt}\), la précision vaut : \(\Delta=\dfrac{\num{0.3}}{100}\times\num{2.5462}+\num{0.0002}=\SI{0.0076}{V}\).
+\end{itemize}
+
+\section{Propagation des incertitudes}
+
+Lorsqu'on réalise une mesure indirecte, on calcule la valeur d'une grandeur physique à partir de grandeurs mesurées. Les incertitudes de détermination des grandeurs mesurées se propagent sur la grandeur calculée et on doit déterminer l'incertitude induite sur cette dernière. Cette compétence est particulièrement utile lorsqu'on effectue une évaluation de type B de l'incertitude.
+
+On s'intéresse donc au problème suivant : on connaît les grandeurs expérimentales \(x,y,\ldots\) avec les incertitudes \(\fdif{x},\fdif{y},\ldots\). Quelle est l'incertitude \(\fdif{q}\) sur la grandeur physique \(q=f\paren{x,y,\ldots}\) ? On peut montrer qu'on a : \[\fdif{q}=\sqrt{\paren{\pdv{f}{x}}^2\times\paren{\fdif{x}}^2+\paren{\pdv{f}{y}}^2\times\paren{\fdif{y}}^2+\ldots}\] où \(\pdv{f}{x}\) est la dérivée partielle de \(f\) par rapport à \(x\), les autres variables étant considérées comme constantes.
