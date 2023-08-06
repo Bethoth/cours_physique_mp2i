@@ -1,0 +1,342 @@
+\chapter{Bases de la thermodynamique \& modèle du gaz parfait}
+
+\minitoc
+
+\section*{Introduction}
+
+La thermodynamique est la science des phénomènes thermiques. Elle est née à la fin du \siecle{xviii} siècle, avec l'apparition de la machine à vapeur. De grands physiciens tels que William Thomson (Kelvin), Joule ou Watt ont participé à son développement.
+
+\section{Description d'un système thermodynamique}
+
+\subsection{Définition}
+
+Un système thermodynamique est un corps ou un ensemble de corps séparés du milieu extérieur par une frontière (réelle ou fictive).
+
+\begin{tkz}
+\node[align=center] at (0,0) {Système\\thermodynamique};
+\draw (0,0) circle (2); % cercle système
+\draw (-4,-4) -- (-4,4) -- (4,4) -- (4,-4) -- (-4,-4); % carré milieu extérieur
+\node[align=center] at (2.5,3) {Milieu\\extérieur};
+\node[below] at (0,-2) {Frontière};
+\node[below right] at (4,4) {Univers = Milieu extérieur \(\union\) Système thermodynamique};
+\end{tkz}
+
+À travers cette frontière, il peut exister des échanges de matière et d'énergie.
+
+\begin{itemize}
+\item Système fermé : pas d'échange de matière avec le milieu extérieur.
+
+\item Système isolé : pas d'échange de matière ou d'énergie avec le milieu extérieur.
+
+\item Système ouvert : échanges de matière ou d'énergie avec le milieu extérieur possibles.
+\end{itemize}
+
+\subsection{Échelles d'étude}
+
+En thermodynamique, les systèmes étudiés seront toujours caractérisés par un très grand nombre de particules. Par exemple, \(\SI{1}{\milli\meter\cubed}\) d'air ambiant contient de l'ordre de \(\num{e16}\) molécules. En effet :
+
+Aux conditions normales de température et de pression, on a le volume molaire : \[V_m=\SI{24}{\liter\per\mole}.\]
+
+Or on a le volume \(V=\SI{1}{mm\cubed}=\SI{e-9}{\meter\cubed}\) donc on a la quantité de matière \[n=\dfrac{V}{V_m}=\dfrac{\num{e-9}}{\num{24e-3}}=\SI{4e-8}{\mole}.\]
+
+Or une mole contient \(N_A=\SI{6.022e23}{\per\mole}\) particules donc on retrouve bien \[N=\numproduct{6.022e23x4e-8}=\num{2.4e16}\] molécules dans \(\SI{1}{mm\cubed}\) d'air.
+
+Problème : \begin{itemize}
+\item pour un système à deux corps en interaction : résolution analytique ;
+
+\item pour un système à trois corps en interaction : résolution numérique ;
+
+\item pour un système à \(\num{e16}\) corps en interaction : résolution numérique impossible, même pour les plus gros ordinateurs.\\
+\end{itemize}
+
+On définit donc trois échelles d'étude :
+
+\begin{itemize}
+\item \underline{Échelle microscopique} : chaque particule ponctuelle possède trois variables de position et trois variables de vitesse, donc pour \(N\) particules, on a \(6N\) variables. Étant donné que l'on ne peut pas suivre la trajectoire de chaque particule au cours du temps, l'étude ne peut être que statistique et relève donc de la thermodynamique statistique.\\
+
+\item \underline{Échelle macroscopique} : le système présente un comportement collectif. En effet, la moyenne des effets microscopiques donne à toute grandeur un aspect continu. On a donc une description globale à partir de paramètres macroscopiques que l'on appelle paramètres d'état. C'est cette échelle que nous utiliserons généralement.\\
+
+\item \underline{Échelle mésoscopique} : c'est une échelle intermédiaire entre celle de la mole (macroscopique) et celle de la molécule (microscopique) et on l'utilisera quelques fois, notamment en statique des fluides. On travaille sur des éléments de volume petits à l'échelle macroscopique mais quand même assez grands pour pouvoir contenir un grand nombre de particules (par exemple : \(\SI{1}{mm\cubed}\) d'air). Ce nombre est assez grand pour pouvoir considérer que la matière contenue dans l'élément de volume est homogène et identifiable par des paramètres thermodynamiques (pression, température, ...) ; le volume est assez petit pour pouvoir considérer que ces paramètres y ont la même valeur en tout point (moyennes statistiques).
+\end{itemize}
+
+Ordres de grandeur :
+
+\begin{tabular}{c|c|c|c}
+& Microscopique & Mésoscopique & Macroscopique \\[1em]
+\(N\) (nombre de particules) & \(\num{1}\) & \(\numrange{e13}{e16}\) & \(\num{e23}\) \\[1em]
+Taille (en \(\unit{m}\)) & \(\num{e-10}\) & \(\num{e-5}\) (\(\SI{10}{\micro\metre}\)) & \(\num{1}\)
+\end{tabular}
+
+\subsection{Équilibre thermodynamique}
+
+L'expérience nous montre que tout système isolé tend vers un état d'équilibre pour lequel les grandeurs température, pression, densité moléculaire, etc..., sont les mêmes en tout point.
+
+Ceci revient à dire qu'il n'y a pas de mouvement macroscopique à l'intérieur du système. Évidemment, les particules continuent à avoir un mouvement microscopique : c'est l'agitation thermique.
+
+En fait, les grandeurs macroscopiques fluctuent autour d'une valeur moyenne qui reste constante au cours du temps.
+
+\subsection{Paramètres/variables d'état}
+
+Ce sont les grandeurs qui permettent de définir l'état d'un système à un instant donné.
+
+Par exemple : pression \(P\), température \(T\), charge \(q\), etc...
+
+Toutes ces grandeurs sont susceptibles d'être modifiées lors d'une transformation du système.
+
+\subsubsection{Température}
+
+Pour l'instant, on la considère sous son sens le plus courant, c'est-à-dire la grandeur macroscopique mesurable à l'aide d'un thermomètre.
+
+L'expérience montre que : \begin{itemize}
+\item un corps en équilibre thermodynamique possède la même température en chacun de ses points ;
+
+\item deux corps mis en contact prolongé se mettent en équilibre thermique ;
+
+\item deux corps en équilibre thermique avec un troisième corps sont en équilibre thermique entre eux : \[\paren{T_1=T_3\quad\text{et}\quad T_2=T_3}\imp T_1=T_2.\] C'est le principe \guillemets{zéro} de la thermodynamique ou principe de l'équilibre thermique.\\
+\end{itemize}
+
+Son unité légale est le Kelvin (\(\unit{\kelvin}\)). Elle est liée au degré Celsius (\(\unit{\degreeCelsius}\)) par : \[T\paren{\unit{\kelvin}}=T\paren{\unit{\degreeCelsius}}+\num{273.15}\]
+
+\subsubsection{Pression}
+
+\begin{tkz}[scale=3]
+\draw (0.707,0.707) arc (45:-45:1); % arc de cercle du fluide
+\draw[ultra thick] (1,0.2) -- (1,-0.2) node[below right] {\(\odif{S}\)}; % surface d'application de la force
+\draw[->] (1,0) node[left] {\(M\)} -- (2,0) node[above left] {\(\vec{n}\)}; % vecteur normal unitaire
+\draw[->] (1,0) -- (4,0) node[above left] {\(\odif{\vec{S}}\)};
+\node[below left] at (0.707,0.707) {fluide};
+\node at (3,0.707) {milieu extérieur};
+\end{tkz}
+
+Pour un fluide en équilibre au contact d'une paroi solide, on définit la pression au point \(M\) par : \[\odif{\vec{F}_{\paren{M}}}=p_{\paren{M}}\odif{\vec{S}_{\paren{M}}}=p_{\paren{M}}\odif{S_{\paren{M}}}\vec{n}.\]
+
+La pression est donc la force exercée par le fluide par unité de surface. Elle existe en tout point du fluide, même si celui-ci n'est pas en contact avec une paroi (c'est celle que mesurerait un manomètre).
+
+Son unité légale est le pascal (\(\unit{\pascal}\)) : \(\SI{1}{\pascal}=\SI{1}{\newton\per\square\meter}\).
+
+Il existe d'autres unités usuelles : \begin{itemize}
+\item le bar : \(\SI{1}{\bar}=\SI{e5}{\pascal}\) ;
+
+\item l'atmosphère : \(\SI{1}{atm}=\SI{1.0135e5}{\pascal}\) ;
+
+\item le millimètre de Mercure : \(\SI{760}{mm\,Hg}=\SI{1.0135e5}{\pascal}=\SI{1}{torr}\).
+\end{itemize}
+
+\subsubsection{Grandeurs extensives et grandeurs intensives}
+
+On dit qu'une grandeur (paramètre ou fonction d'état) est intensive pour un système \(\paren{\Sigma}\) si elle prend la même valeur dans tout sous-système de \(\paren{\Sigma}\) à l'équilibre thermodynamique, indépendamment de sa taille. En clair, c'est une grandeur indépendante de la quantité de matière.
+
+Par exemple, la pression, la température ou la masse volumique sont des grandeurs intensives.
+
+On dit qu'une grandeur \(G\) (paramètre ou fonction d'état) est extensive si elle est additive, c'est-à-dire si elle est proportionnelle à la quantité de matière. En clair, si \(\paren{\Sigma}=\paren{\Sigma_1}\union\paren{\Sigma_2}\) alors \(G=G_1+G_2\).
+
+Par exemple, le volume, la masse ou la quantité de matière sont des grandeurs extensives.
+
+Pour un système constitué d'une phase homogène, on peut construire de nouvelles grandeurs intensives en faisant le rapport de deux grandeurs extensives pour chacun de ses éléments de volume \(\odif{V}\) : \[\text{int}=\dfrac{\text{ext}}{\text{ext}}\]
+
+Par exemple, la masse volumique \(\mu=\odv{m}{V}\), le volume massique \(v=\dfrac{1}{\mu}=\odv{V}{m}\), etc...
+
+\subsection{Équation d'état}
+
+C'est une équation qui relie entre elles les différentes variables d'état qui caractérisent l'état d'un système.
+
+Par exemple, dans le cas d'un gaz faiblement comprimé, l'équation d'état déterminée expérimentalement est : \[pV=nRT\] où \begin{description}
+\item \(n\) : nombre de moles
+
+\item \(R\) : constante des gaz parfaits (\(R=\SI{8.314}{\joule\per\kelvin\per\mole}\))\\
+\end{description}
+
+Il faut évidemment que toutes ces grandeurs soient exprimées dans le Système International : \[p:\unit{\pascal}\qquad V:\unit{m^3}\qquad T:\unit{\kelvin}\]
+
+Pour les gaz fortement comprimés et les liquides, les équations d'état sont généralement plus compliquées et ne sont valables qu'au voisinage d'un état d'équilibre thermodynamique donné.
+
+\section{Approche microscopique du gaz parfait monoatomique}
+
+\subsection{Agitation moléculaire}
+
+Bernoulli (\siecle{xviii} siècle) postule qu'un gaz est constitué d'un grand nombre de particules en agitation incessante.
+
+Brown (1827) observe au microscope le mouvement désordonné de particules colloïdales dans un fluide : mouvement brownien.
+
+La trajectoire de chaque particule est une marche au hasard en direction et en vitesse. On a un chaos moléculaire.
+
+La marche au hasard est due aux collisions particule/particule et particule/paroi.
+
+\subsection{Le modèle des gaz parfaits monoatomiques}
+
+Un gaz parfait monoatomique est constitué uniquement d'atomes (gaz rares, par exemple : He, Ne, Ar, ...). Dans la nature, on rencontre essentiellement des gaz parfaits diatomiques (par exemple : O\(_2\), N\(_2\), H\(_2\), ...) ou triatomiques (par exemple : CO\(_2\), H\(_2\)O, ...).
+
+Par définition, un gaz est parfait si les atomes n'interagissent pas entre eux. Les atomes sont ponctuels et tous identiques. Les seules interactions sont les collisions atome/paroi.
+
+\subsection{La pression cinétique}
+
+Hypothèses du modèle d'un gaz parfait monoatomique : \begin{itemize}
+\item les atomes sont tous identiques et il n'existe pas d'interaction entre eux ;
+
+\item les atomes sont animés de la même vitesse \(u\) ;
+
+\item à tout instant, chaque atome ne se déplace que selon une direction (\(\vec{u}_x\), \(\vec{u}_y\) ou \(\vec{u}_z\)) et dans un sens (\(\rightleftarrows\)) ;
+
+\item tous les sens et directions sont équiprobables.\\
+\end{itemize}
+
+Donc à un instant donné, un sixième des atomes se déplace dans un sens et une direction fixés.
+
+\subsubsection{Choc d'un atome contre la paroi}
+
+\begin{tkz}[scale=1.8]
+\draw[<-] (-3,0) node[below left] {\(x\)} -- (6,0); % axe
+\draw[<-,blue,thick] (-1,0) node[below left] {\(\vec{u}_x\)} -- (0,0); % vecteur unitaire ux
+\draw[ultra thick] (0,1) -- (0,4); % paroi
+\fill[pattern=north east lines] (0,1) -- (-0.5,1) -- (-0.5,4) -- (0,4); % bloc paroi
+\draw[<-,green] (2,3) node[above left] {\(\vec{v}\)} -- (4,3); % vecteur vitesse v
+\draw[->,green] (2,2) -- (4,2) node[below right] {\(\vec{v}^{\,\prime}\)}; % vecteur vitesse v'
+\end{tkz}
+
+Avant le choc, l'atome a pour vitesse \(\vec{v}=u\vec{u}_x\).
+
+Après le choc, il a pour vitesse \(\vec{v}^{\,\prime}=-u\vec{u}_x\).
+
+On calcule la variation de quantité de mouvement de l'atome lors de la collision : \[\odif{\vec{p}_{\text{atome}}}=\vec{p}_f-\vec{p}_i=m\vec{v}^{\,\prime}-m\vec{v}=-2mu\vec{u}_x.\]
+
+Donc on a \[\odif{\vec{p}_{\text{paroi}}}=-\odif{\vec{p}_{\text{atome}}}=2mu\vec{u}_x.\]
+
+\subsubsection{Choc de l'ensemble des atomes utiles pendant une durée \(\odif{t}\)}
+
+\begin{tkz}
+\draw[ultra thick] (0,0) -- (0,5); % paroi
+\fill[pattern=north east lines] (0,0) -- (-0.5,0) -- (-0.5,5) -- (0,5); % bloc paroi
+\draw[dashed] (0,1) -- (3,1) -- (3,4) -- (0,4); % aire contenant les atomes utiles
+% vecteurs vitesse de quelques atomes
+\draw[->,green] (0.5,2) -- (0.5,1);
+\draw[->,green] (2,2) -- (1,2);
+\draw[->,green] (2,2.5) -- (2,3.5);
+\draw[->,green] (2.5,3) -- (3.5,3);
+\draw[->,green] (0.5,4.5) -- (0.5,3.5);
+\draw[->,green] (1.5,3) -- (0.5,3);
+\draw[->,green] (1.5,1.5) -- (2.5,1.5);
+\draw[<->] (0,0.5) -- (3,0.5); % longueur u x dt
+\node[below] at (1.5,0.5) {\(u\odif{t}\)};
+\end{tkz}
+
+Seuls les atomes avec une vitesse selon \(+\vec{u}_x\) peuvent entrer en collision avec la paroi s'ils sont situés à une distance inférieure à \(u\odif{t}\) de la paroi.
+
+On pose \(n^*\) le nombre d'atomes par unité de volume. C'est la densité particulaire (en \(\unit{\per\metre\cubed}\)).
+
+On a le nombre de collisions : \[\odif{N}=\dfrac{n^*\overbrace{u\odif{t}\odif{S}}^{\substack{\text{volume où} \\ \text{sont logés} \\ \text{les atomes} \\ \text{utiles}}}}{6}\] où \(\odif{S}\) est la surface de la paroi.
+
+Donc on a la variation de quantité de mouvement de la paroi pendant \(\odif{t}\) : \[\odif{\vec{p}_{\text{paroi}}}=\dfrac{2mu^2n^*\odif{t}\odif{S}\vec{u}_x}{6}\]
+
+On applique le principe fondamental de la dynamique sur la paroi : \[\odv{\vec{p}_{\text{paroi}}}{t}=\odif{\vec{F}_{\text{paroi}}}=\dfrac{2mu^2n^*\odif{S}\vec{u}_x}{6}\] où \(\odif{\vec{F}_{\text{paroi}}}\) est la force que subit la paroi sur la surface \(\odif{S}\).
+
+Or \(\odif{\vec{F}_{\text{paroi}}}=p\odif{\vec{S}}\) donc \[p=\dfrac{1}{3}n^*mu^2\] est la pression cinétique (due aux collisions).
+
+\subsubsection{Critique du modèle}
+
+\begin{itemize}
+\item En réalité, il n'y a pas forcément que six couples \(\paren{\text{direction},\text{sens}}\).
+
+\item Les vitesses de chaque atome ne sont pas forcément égales.
+
+\item La paroi n'est pas nécessairement plane.
+
+\item Les collisions peuvent ne pas être élastiques.
+\end{itemize}
+
+\subsection{Température cinétique du gaz parfait monoatomique}
+
+On définit la température cinétique du gaz parfait monoatomique à l'équilibre thermodynamique comme une moyenne de l'énergie cinétique d'agitation thermique : \[\moy{E_{c_{\text{atome}}}}=\moy{\dfrac{1}{2}m\vec{v}^2}=\dfrac{1}{2}mu^2=\dfrac{3}{2}k_BT\] où \begin{description}
+\item \(T\) est la température (en Kelvin, \(\unit{\kelvin}\)) ;
+
+\item \(k_B\) est la constante de Boltzmann (\(k_B=\SI{1.38e-23}{\joule\per\kelvin}\)).\\
+\end{description}
+
+On en déduit : \[u=\sqrt{\dfrac{3k_BT}{m}}.\]
+
+À \(T=\SI{0}{\kelvin}\), on a \(u=\SI{0}{\metre\per\second}\) (état d'ordre absolu).
+
+À \(T=\SI{293}{\kelvin}\), en considérant la masse de l'Hélium \(m_{\text{He}}=4\times\SI{1.67e-27}{\kilo\gram}\), on a \(u\propto\SI{e3}{\metre\per\second}<c\), ce qui est cohérent. On a un grand nombre de collisions donc cela valide le modèle du gaz parfait monoatomique.
+
+\subsection{Équation d'état}
+
+On a : \[p=\dfrac{1}{3}n^*mu^2\quad\text{et}\quad\dfrac{3}{2}k_BT=\dfrac{1}{2}mu^2\] donc : \[p=n^*k_BT\] où \(n^*\) est le nombre de particules par unité de volume donc \(n^*=\dfrac{N}{V}\), où \(N\) est le nombre de particules donc \(N=nN_A\) donc on a : \[p=\dfrac{nN_A}{V}k_BT.\]
+
+On pose : \[R=N_Ak_B=\SI{8.314}{\joule\per\kelvin\per\mole}.\]
+
+On a \(p=\dfrac{nRT}{V}\), d'où : \[pV=nRT.\]
+
+C'est l'équation d'état des gaz parfaits, obtenue à partir du modèle cinétique.
+
+\(p\), \(V\), \(n\) et \(T\) sont des paramètres d'état donc des grandeurs macroscopiques.
+
+\section{Énergie interne}
+
+\subsection{Définition}
+
+L'énergie interne est l'énergie totale contenue dans un système thermodynamique. Elle est notée \(U\). Elle est la somme de \begin{itemize}
+\item l'énergie cinétique de translation des particules ;
+
+\item l'énergie cinétique de rotation des particules sur elles-mêmes ;
+
+\item l'énergie cinétique de vibration des particules polyatomiques ;
+
+\item l'énergie potentielle d'interaction entre les particules.
+\end{itemize}
+
+\subsection{Gaz parfait monoatomique}
+
+Pour un gaz parfait monoatomique, l'énergie interne n'est constituée que de l'énergie cinétique de translation des particules : \[U=\sum_iE_{c_i}=\sum_i\dfrac{1}{2}mu^2=N\times\dfrac{1}{2}mu^2.\]
+
+Or on a \(\dfrac{3}{2}k_BT=\dfrac{1}{2}mu^2\) donc : \[U=\dfrac{3}{2}Nk_BT.\]
+
+Or \(N=nN_A\) donc : \[U=\dfrac{3}{2}nN_Ak_BT=\dfrac{3}{2}nRT.\]
+
+On a une équation d'état.
+
+On sait que \(n\) est une grandeur extensive donc \(U\) est une grandeur extensive.
+
+\(U\) ne dépend que des paramètres d'état donc c'est une fonction d'état. On peut donc décrire un système en donnant son énergie interne.
+
+De plus, on définit : \[C_V=\pdv{U}{T}_V\] la capacité thermique à volume constant (en \(\unit{\joule\per\kelvin}\)).
+
+Or \(U=\dfrac{3}{2}nRT\) donc : \[\pdv{U}{T}_V=\odv{U}{T}=\dfrac{3}{2}nR.\]
+
+\(C_V\) est l'énergie qu'il faut fournir au gaz parfait monoatomique pour élever sa température de \(\SI{1}{\kelvin}\).
+
+On définit aussi la capacité thermique molaire à volume constant (en \(\unit{\joule\per\kelvin\per\mole}\)) : \[C_{V_m}=\dfrac{C_V}{n}\] et la capacité thermique massique à volume constant (en \(\unit{\joule\per\kelvin\per\kilo\gram}\)) : \[c_V=\dfrac{C_V}{m}.\]
+
+Pour un gaz parfait monoatomique, on a : \[C_{V_m}=\dfrac{\frac{3}{2}nR}{n}=\dfrac{3}{2}R=\SI{12.5}{\joule\per\kelvin\per\mole}.\]
+
+\(C_V\) est extensive mais \(C_{V_m}\) et \(c_V\) sont intensives.
+
+\subsection{Cas du gaz parfait polyatomique}
+
+Les gaz parfait polyatomiques contiennent des molécules non-ponctuelles donc dans l'expression de l'énergie interne, il faut ajouter l'énergie cinétique de rotation et de vibration, ainsi que l'énergie potentielle élastique.
+
+Pour les pressions faibles, le gaz parfait polyatomique tend vers un comportement limite tel que : \begin{itemize}
+\item on a une équation d'état \(pV=nRT\) ;
+
+\item son énergie interne ne dépend que de la température : \(U=U\paren{T}\). \\
+\end{itemize}
+
+Idem, on définit : \[C_V=\pdv{U}{T}_V=\odv{U}{T}.\]
+
+On trouve \(C_{V_m}>\dfrac{3}{2}R\). Cela signifie qu'il faut plus d'énergie pour élever la température d'un gaz parfait polyatomique que celle d'un gaz parfait monoatomique.
+
+\subsection{Phases condensées}
+
+Les phases condensées sont les liquides ou les solides. Les molécules sont très proches les unes des autres et ont donc beaucoup d'interactions entre elles.
+
+On définit la compressibilité isotherme (en \(\unit{\per\pascal}\)) : \[\chi=-\dfrac{1}{V}\pdv{V}{P}_T\]
+
+En général, pour une phase condensée, \(\chi=0\) donc \(\odif{V}=0\).
+
+Donc quelles que soient les conditions de température et de pression, \(V=\cte\) : on a une équation d'état pour les phases condensées.
+
+De plus, de même que pour les gaz parfaits, l'énergie interne des phases condensées ne dépend que de la température : \(U=U\paren{T}\).
+
+On définit \[C_V=\pdv{U}{T}\] et on obtient \[\odif{U}=C_V\odif{T}.\]
+
+Pour \(C_V\), on utilise des tables thermodynamiques.
+
+On n'a pas de modèle pour les phases condensées parce qu'il y a beaucoup d'interactions entre les molécules.

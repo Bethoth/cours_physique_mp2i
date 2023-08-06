@@ -1,0 +1,702 @@
+\chapter{Introduction à l'électrocinétique}
+
+\minitoc
+
+\section*{Introduction}
+
+L'électrocinétique est la science qui permet d'étudier les circuits et les grandeurs électriques (tension, courant, charge...).
+
+On distingue le régime continu (\(f=\SI{0}{\hertz}\)) et le régime variable (\(f\) va de \(0\) à quelques \(\unit{\giga\hertz}\)).
+
+\section{Les porteurs de charge électrique}
+
+Par définition, un courant électrique est un déplacement d'ensemble ordonné de particules chargées. Évidemment, la nature de ces particules dépend du milieu dans lequel elles se trouvent.
+
+\subsection{Nature et déplacement des porteurs de charge}
+
+\subsubsection{Conduction dans les solides}
+
+Les conducteurs solides sont les plus usuels.
+
+Les atomes sont constitués d'électrons (de charge \(-e\)), de protons (de charge \(+e\)) et de neutrons (de charge nulle).
+
+\(e\) est la charge élémentaire : \[e=\SI{1.602e-19}{\coulomb}.\]
+
+Globalement, la matière est neutre, mais dans certains solides, il peut y avoir une modification de la répartition des charges dans l'espace : c'est ce qui fait la différence entre les solides conducteurs (appelés aussi métaux) et les isolants.
+
+Dans les métaux, chaque atome peut libérer facilement un ou deux électrons (en moyenne) qui deviennent alors des électrons libres. Un métal est donc un réseau d'ions de charge strictement positive au travers duquel peuvent se déplacer des électrons libres (on parle de \guillemets{nuage} d'électrons libres).
+
+Conducteur au repos : les cations effectuent des oscillations de faible amplitude autour de leur position d'équilibre, alors que les électrons ont un mouvement complètement aléatoire d'agitation thermique (\(v\approx\SI{e6}{\metre\per\second}\)). Globalement, il n'y a donc aucun déplacement de particules.
+
+Déplacement d'ensemble : si l'on crée une différence de potentiel (donc un champ électrique \(\vec{E}\)) entre deux extrémités d'un conducteur, les électrons libres sont entraînés (\(\vec{F}=q\vec{E}=-e\vec{E}\)) alors que les cations restent fixes (ils sont piégés dans le réseau cristallin). On a donc un mouvement d'ensemble de conduction électrique : c'est le courant électrique.
+
+Un solide isolant est donc un solide qui contient très peu d'électrons libres, voire aucun, sauf à haute température.
+
+Les solides semi-conducteurs ont une nature intermédiaire entre les conducteurs et les isolants. À température usuelle, le nombre d'électrons libres est faible, mais celui-ci peut augmenter très rapidement lorsque la température augmente ou sous l'effet d'une différence de potentiel. C'est donc parce que leur conductivité électrique est \guillemets{variable} et \guillemets{commandable} que les semi-conducteurs comme le silicium et le germanium sont très largement utilisés dans les composants électroniques usuels (diodes, transistors, A.O., etc...).
+
+\subsubsection{Conduction dans les liquides}
+
+Les liquides conducteurs sont appelés des électrolytes. Ils contiennent des ions dont la migration assure la conduite électrique.
+
+Cette propriété est notamment utilisée en conductimétrie pour déterminer les évolutions des concentrations des différentes espèces ioniques dans une solution.
+
+\subsubsection{Conduction dans les gaz}
+
+Dans les conditions usuelles, les gaz ne sont pas conducteurs. Cependant, ils peuvent s'ioniser et devenir très conducteurs s'ils sont portés à de très hautes températures (plasma) ou s'ils sont soumis à des champs électriques très intenses (foudre).
+
+Le champ disruptif de l'air est \(E\approx\SI{e6}{\volt\per\meter}\).
+
+Ceci signifie que si dans l'air on approche deux conducteurs à \(\SI{1}{\micro\meter}\) l'un de l'autre en maintenant entre eux une différence de potentiel de \(\SI{1}{\volt}\), il y aura court-circuit par étincelle.
+
+\subsection{Les différents types de courants}
+
+\subsubsection{Courants particulaires}
+
+Déplacement de particules chargées dans le vide.
+
+Exemple : faisceau électronique dans un tube cathodique.
+
+\subsubsection{Courants de conduction}
+
+Déplacement de porteurs de charge dans un milieu matériel immobile.
+
+Exemples : électrons dans les métaux, ions dans les électrolytes, etc...
+
+\subsubsection{Courants de convection}
+
+Déplacement de charges provoqué par le mouvement du support matériel chargé dans le référentiel d'étude, les charges étant fixes par rapport au support mobile.
+
+\section{Le courant électrique}
+
+\subsection{Intensité et sens conventionnel du courant}
+
+Le courant électrique résulte du déplacement d'ensemble des porteurs de charge dans un milieu matériel. Par définition, l'intensité \(i\) du courant électrique à travers une surface \(S\) est la quantité de charges qui traversent par unité de temps. On a : \[i=\odv{q}{t}\] avec \begin{description}
+\item \(i\) l'intensité du courant qui traverse la surface \(S\) (en \(\unit{\ampere}\))
+\item \(q\) la charge électrique qui traverse la surface \(S\) (en \(\unit{\coulomb}\))
+\item \(t\) le temps (en \(\unit{\second}\)). \\
+\end{description}
+
+On dit que \(i\) est le flux de charge.
+
+De plus, \(i=\odv{q}{t}\) est une relation algébrique donc \(i\supinf0\), selon le sens de déplacement des charges et selon la nature des porteurs de charge.
+
+\subsection{Conservation de la charge et loi des nœuds}
+
+La charge \(q\) ne peut être ni créée ni détruite. C'est une grandeur conservative : elle se conserve si le système est isolé. La quantité de charges qui arrive à un nœud de jonction est donc égale à celle qui en repart.
+
+\begin{circuit}[scale=1.5]
+\draw (-1,1) to[short,-*,i_=\(i_1\)] (0,0);
+\draw (1,1) to[short,-*,i_=\(i_2\)] (0,0);
+\draw (1,0) to[short,-*,i=\(i_3\)] (0,0);
+\draw (0,0) to[short,*-,i_=\(i_4\)] (0,-1);
+\end{circuit}
+
+On a : \[i_1+i_2+i_3=i_4\quad\text{ou}\quad\sum_k\epsilon_ki_k=0\] avec \begin{description}
+\item \(i_k\) le courant dans la branche \(k\)
+\item \(\epsilon_k=\begin{dcases}1&\text{si le courant est dirigé vers le nœud} \\ -1 &\text{si le courant est dirigé à partir du nœud}\end{dcases}\) \\
+\end{description}
+
+C'est la loi des nœuds (ou première loi de Kirchhoff).
+
+\subsection{Densité volumique de charge}
+
+On définit la quantité de charges électriques par unité de volume (en \(\unit{\coulomb\per\meter\cubed}\)) : \[\rho_V=\odv{Q}{\tau}\] avec \begin{description}
+\item \(\odif{Q}\) : charge (en \(\unit{\coulomb}\))
+\item \(\odif{\tau}\) : volume (en \(\unit{\metre\cubed}\)) \\
+\end{description}
+
+Dans un échantillon élémentaire de volume \(\odif{\tau}\), on compte la charge \(\odif{Q}\).
+
+Soit \(\odif{N}\) le nombre de porteurs de charge dans \(\odif{\tau}\). S'il s'agit d'électrons, chacun porte la charge \(-e\).
+
+Donc : \[\odif{Q}=-e\odif{N}.\]
+
+On pose \(n=\odv{N}{\tau}\) la densité volumique de porteurs de charge.
+
+On a donc : \[\begin{aligned}
+\odif{Q}&=-e\odif{N} \\
+\odv{Q}{\tau}&=-e\odv{N}{\tau} \\
+\rho_V&=-en
+\end{aligned}\]
+
+Dans un métal, chaque atome libère un ou deux électrons en moyenne. Donc : \[n=\SI{e29}{\per\metre\cubed}.\]
+
+Donc : \[\rho_V=-en=\numproduct{1.6e-19x10e29}\approx\SI{e10}{\coulomb\per\meter\cubed}.\]
+
+\subsection{Approximation des régimes quasi-stationnaires (ARQS)}
+
+Régime continu : toutes les grandeurs électriques sont des constantes du temps.
+
+Régime variable : les grandeurs électriques sont des fonctions périodiques à la fréquence \(f\).
+
+Si les variations des grandeurs électriques sont lentes, les lois de l'électrocinétique en régime variable sont les mêmes qu'en régime continu.
+
+En réalité, les grandeurs électriques sont des ondes électromagnétiques qui se propagent à la célérité \(c\approx\SI{3e8}{\metre\per\second}\).
+
+Dans un conducteur de longueur \(l\), le temps de propagation est donc : \[\tau=\dfrac{l}{c}.\]
+
+Pour être dans l'approximation des régimes quasi-stationnaires, il faut vérifier que \(\tau\) est très inférieur à \(T=\dfrac{1}{f}\) avec \(f\) la fréquence du générateur, le temps de variation des sources (\ie le générateur). Autrement dit : \[\begin{aligned}
+\text{ARQS}&\iff\tau\ll T \\
+&\iff\dfrac{l}{c}\ll\dfrac{1}{f} \\
+&\iff l\ll\dfrac{c}{f}.
+\end{aligned}\]
+
+Avec le réseau domestique (\(\SI{230}{\volt}\) et \(\SI{50}{\hertz}\)) : \[\text{ARQS}\iff l\ll\dfrac{c}{f}=\dfrac{\num{3e8}}{50}=\SI{6000}{\kilo\meter}.\]
+
+Ainsi, à l'échelle domestique, on est toujours dans l'ARQS donc les règles de l'électrocinétique s'appliquent. On ne tient pas compte des phénomènes de propagation.
+
+En TP on a des circuits de longueur \(l=\SI{1}{\metre}\) donc on est dans l'ARQS si \(f\ll\SI{300}{\mega\hertz}\). On utilise donc des générateurs basse fréquence.
+
+\subsection{La tension électrique}
+
+On définit le potentiel électrique \(V\) en tout point du circuit.
+
+Prenons par exemple un dipôle : \begin{circuitikz}
+\draw (0,0) to[short,-*] ++(0.5,0) -- ++(0.5,0) to[generic] ++(1,0) -- ++(0.5,0) to[short,*-] ++(0.5,0);
+\node[above] at (0.5,0) {\(A\)};
+\node[above] at (2.5,0) {\(B\)};
+\end{circuitikz}
+
+La tension électrique est la différence de potentiel entre \(A\) et \(B\) : \[U_{AB}=V_A-V_B.\]
+
+C'est la tension non-nulle qui permet aux charges électriques de s'écouler et donne naissance au courant électrique.
+
+Analogie avec la mécanique :
+
+\begin{tkz}[scale=0.8]
+\draw[gray,->] (-1,0) -- (6,0); % axe
+\draw[gray,->] (0,-1) -- (0,6) node[above left] {\(z\)}; % axe
+\draw[thick] (1,5) node[above left] {\(A\)} -- (5,1) node[below right] {\(B\)}; % chemin
+\draw (3.37,3.37) circle (0.5); % bille
+\draw[->] (3.37,3.37) -- (4.37,2.37); % mouvement
+\draw[->,violet] (5.5,5.5) -- (5.5,4.5) node[right] {\(\vec{g}\)}; % g
+\node[gray,below left] at (0,0) {\(z_0\)};
+\draw[gray,dashed] (0,1) node[left] {\(z_B\)} -- (5,1);
+\draw[gray,dashed] (0,5) node[left] {\(z_A\)} -- (1,5);
+\end{tkz}
+
+La bille descend car \(z_A>z_B\).
+
+De plus, de même que pour l'altitude, on définit une référence de potentiel, c'est-à-dire le \guillemets{potentiel 0}.
+
+Cette référence est la masse, que l'on représente ainsi : \begin{circuitikz}
+\draw (0,0) node[eground]{};
+\end{circuitikz}
+
+Exemple de circuit :
+
+\begin{circuit}
+\draw (0,0) to[short,-*,i=\(i\)] ++(3,0) -- ++(1,0) to[R,l_=\(R\),v^=\(u_R\)] ++(0,-3) to[short,-*] ++(-1,0) -- ++(-1,0) node[eground] {} -- ++(-2,0) to[vsource,v=\(E\)] (0,0);
+\node[above] at (3,0) {\(A\)};
+\node[below] at (3,-3) {\(M\)};
+\node at (2,-4) {\(V=\SI{0}{\volt}\)};
+\end{circuit}
+
+\(u_R=V_A-V_M=V_A\) est la tension aux bornes de la résistance \begin{circuitikz}
+\draw (0,0) to[R,l=\(R\)] (3,0);
+\end{circuitikz}
+
+\(E=V_A-V_M=V_A\) est la tension aux bornes du générateur \begin{circuitikz}
+\draw (0,0) to[vsource] (3,0);
+\end{circuitikz}
+
+On considère le circuit suivant :
+
+\begin{circuit}
+\draw (0,0) to[twoport,t=\(D_2\),v^=\(U_2\),*-*] ++(3,0) to[twoport,t=\(D_3\),v^=\(U_3\)] ++(0,-3) to[short,-*] ++(-1.5,0) -- ++(-1.5,0) to[twoport,t=\(D_1\),v^>=\(U_1\)] (0,0);
+\node[above left] at (0,0) {\(A\)};
+\node[above right] at (3,0) {\(B\)};
+\node[below] at (1.5,-3) {\(C\)};
+\node[scale=1.5] at (1.5,-1.5) {\(\circlearrowleft\)};
+\end{circuit}
+
+On choisit un sens arbitraire et on parcourt le circuit dans ce sens en écrivant les tensions : \[-U_1+U_3+U_2=V_A-V_A=0.\]
+
+On a : \[U_3+U_2=U_1\quad\text{ou}\quad\sum_k\epsilon_kU_k=0\] avec \begin{description}
+\item \(U_k\) la tension aux bornes du dipôle \(k\)
+\item \(\epsilon_k=\begin{dcases}1&\text{si la flèche de tension est dans le sens arbitraire} \\ -1&\text{sinon}\end{dcases}\) \\
+\end{description}
+
+C'est la loi des mailles (ou deuxième loi de Kirchhoff).
+
+\section{Dipôle électrocinétique}
+
+\subsection{Définition}
+
+Un dipôle électrocinétique est un dispositif relié au circuit par deux bornes :
+
+\begin{circuit}
+\draw (0,0) to[short,*-,i=\(i_\text{e}\)] ++(1,0) to[twoport,t=\(D\),v=\(u\)] ++(1,0) to[short,-*,i=\(i_\text{s}\)] ++(1,0);
+\node[above] at (0,0) {\(A\)};
+\node[above] at (3,0) {\(B\)};
+\end{circuit}
+
+Dans l'ARQS, on a : \[i_\text{e}=i_\text{s}=i\].
+
+On a : \[u=V_A-V_B\] la différence de potentiel aux bornes du dipôle.
+
+On effectue un premier pour le sens du courant électrique :
+
+\begin{center}
+\begin{circuitikz}
+\draw (0,0) to[short,i=\(i\)] ++(1,0) to[twoport,t=\(D\)] ++(1,0) -- ++(1,0);
+\end{circuitikz}
+\qquad
+\begin{circuitikz}
+\draw (0,0) to[short,i<=\(i\)] ++(1,0) to[twoport,t=\(D\)] ++(1,0) -- ++(1,0);
+\end{circuitikz}
+\end{center}
+
+Une fois ce choix effectué, il faut choisir le sens de la flèche de tension :
+
+\begin{center}
+\begin{circuitikz}
+\draw (0,0) to[short,i=\(i\)] ++(1,0) to[twoport,t=\(D\),v=\(u\)] ++(1,0) -- ++(1,0);
+\node[below] at (1.5,-1) {convention récepteur};
+\end{circuitikz}
+\qquad
+\begin{circuitikz}
+\draw (0,0) to[short,i=\(i\)] ++(1,0) to[twoport,t=\(D\),v>=\(u\)] ++(1,0) -- ++(1,0);
+\node[below] at (1.5,-1) {convention générateur};
+\end{circuitikz}
+\end{center}
+
+Remarque : \(u\) et \(i\) sont des grandeurs algébriques donc on a : \[i\supinf0\quad\text{et}\quad u\supinf0.\]
+
+Donc les flèches de tension et de courant ne traduisent pas forcément le sens réel.
+
+\subsection{Puissance reçue par un dipôle}
+
+On considère le dipôle suivant :
+
+\begin{circuit}
+\draw (0,0) to[twoport,t=\(D\),i>^=\(i\),v=\(u\)] ++(3,0);
+\end{circuit}
+
+Entre les instants \(t\) et \(t+\odif{t}\) (durée \(\odif{t}\) infinitésimale), la charge \[\odif{q}=i\odif{t}\] a traversé le dipôle.
+
+Cela correspond à une énergie \[\fdif{W}=u\odif{q}=ui\odif{t}.\]
+
+Or la puissance est la dérivée de l'énergie par rapport au temps donc \[P=\odv{W}{t}=ui.\]
+
+Soit \(P\) la puissance reçue par un dipôle en convention récepteur.
+
+Si \(P>0\), le dipôle a un comportement récepteur.
+
+Si \(P<0\), le dipôle a un comportement générateur.
+
+\attention convention \(\not=\) comportement.
+
+Prenons par exemple une résistance :
+
+\begin{center}
+\begin{tabular}{c|c|c}
+& Convention récepteur & Convention générateur \\
+\hline
+Schéma & \begin{circuitikz}\draw (0,0) to[R,l=\(R\),i>^=\(i\),v=\(u\)] ++(3,0);\end{circuitikz} & \begin{circuitikz}\draw (0,0) to[R,l=\(R\),i>^=\(i\),v>=\(u\)] ++(3,0);\end{circuitikz} \\[1em]
+Loi d'Ohm & \(u=Ri\) & \(u=-Ri\) \\[1em]
+Puissance reçue & \(P=ui\) & \(P=-ui\) \\[1em]
+Puissance & \(P=Ri^2\geq0\) & \(P=Ri^2\geq0\)
+\end{tabular}
+\end{center}
+
+On remarque donc que peu importe la convention utilisée, une résistance a un comportement récepteur.
+
+\subsection{Caractéristique d'un dipôle}
+
+Généralement, l'intensité \(i\) qui traverse un dipôle dépend de la tension \(u\) à ses bornes. On a donc \[i=f\paren{u}\] où \(f\) est la caractéristique du dipôle.
+
+\begin{tkz}
+\begin{axis}[axis lines=left,
+xlabel={\(u\)},
+ylabel={\(i\)},
+xmin=0,xmax=6,
+ymin=0,ymax=5,
+xtick={4},
+xticklabels={\(u_M\)},
+ytick={0,2.718},
+yticklabels={\(0\),\(i_M\)},
+xlabel style={at={(axis description cs:1,0)},anchor=north west},
+ylabel style={at={(axis description cs:0,1)},anchor=south east,rotate=-90}]
+\addplot[domain=0:6,samples=1000,smooth] {exp(x-3)};
+\draw[dashed] (4,0) -- (4,2.718) node[below right] {\(M\)} -- (0,2.718);
+\end{axis}
+\end{tkz}
+
+L'ensemble des points \(M\) appartenant à la caractéristique sont appelés des points de fonctionnement du dipôle.
+
+\subsection{Les dipôles fondamentaux}
+
+Un dipôle est dit passif si sa caractéristique passe par l'origine. Sinon, il est dit actif.
+
+Un dipôle est dit linéaire si la relation entre \(i\) et \(u\) est une équation différentielle linéaire. Sinon, il est dit non-linéaire.
+
+Un dipôle est dit symétrique si sa caractéristique est impaire.
+
+\subsubsection{Dipôles passifs}
+
+\underline{Résistance} (convention récepteur) :
+
+\begin{circuit}
+\draw (0,0) to[R,l^=\(R\),i>^=\(i\),v_=\(u\)] ++(3,0);
+\end{circuit}
+
+Caractéristique : loi d'Ohm \(u=Ri\)
+
+\begin{tkz}
+\begin{axis}[axis lines=middle,
+xlabel={\(u\)},
+ylabel={\(i\)},
+xmin=-6,xmax=6,
+ymin=-5,ymax=5,
+xmajorticks=false,
+ytick={0}]
+\addplot[domain=-6:6,samples=1000,smooth] {x};
+\end{axis}
+\end{tkz}
+
+C'est un dipôle passif, linéaire et symétrique.
+
+\underline{Condensateur} (convention récepteur) :
+
+\begin{circuit}
+\draw (0,0) to[C,l^=\(C\),v_=\(u\),i>^=\(i\)] ++(3,0);
+\end{circuit}
+
+\(C\) est la capacité du condensateur (en farad : \(\unit{\farad}\)).
+
+Caractéristique : \[i=C\odv{u}{t}\]
+
+C'est un dipôle passif et linéaire.
+
+On a : \[P=ui=Cu\odv{u}{t}=\odv{}{t}\paren{\dfrac{1}{2}Cu^2}=\odv{E}{t}\] où \(E\) est l'énergie stockée dans le condensateur (en joule : \(\unit{\joule}\)).
+
+\underline{Bobine} (convention récepteur) :
+
+\begin{circuit}
+\draw (0,0) to[L,l^=\(L\),v_=\(u\),i>^=\(i\)] ++(3,0);
+\end{circuit}
+
+\(L\) est l'inductance de la bobine (en henry : \(\unit{\henry}\)).
+
+Caractéristique : \[u=L\odv{i}{t}\]
+
+C'est un dipôle passif et linéaire.
+
+On a : \[P=ui=Li\odv{i}{t}=\odv{}{t}\paren{\dfrac{1}{2}Li^2}=\odv{E}{t}\] où \(E\) est l'énergie emmagasinée dans la bobine (\(E>0\), en joule).
+
+\subsubsection{Dipôles actifs}
+
+\underline{Générateur de tension} (convention générateur) :
+
+\begin{circuit}
+\draw (0,0) to[vsource,i<^=\(i\),v_<=\(E\)] ++(3,0);
+\end{circuit}
+
+Caractéristique : \[u=E\]
+
+\begin{tkz}[brace/.style={thick,decorate,decoration={calligraphic brace,amplitude=7pt,raise=0.5ex}}]
+\begin{axis}[axis y line=left, axis x line=middle,
+xlabel={\(u\)},
+ylabel={\(i\)},
+xmin=0,xmax=2,
+ymin=-5,ymax=5,
+xmajorticks=false,
+ytick={0},
+ylabel style={at={(axis description cs:0,1)},anchor=south east,rotate=-90}]
+\addplot[samples=1000,smooth] (1,x);
+\node[below left] at (1,0) {\(E\)};
+\draw[brace] (1.1,5) -- node[right=1.5ex,align=center] {comportement\\générateur} (1.1,0);
+\draw[brace] (1.1,0) -- node[right=1.5ex,align=center] {comportement\\récepteur} (1.1,-5);
+\end{axis}
+\end{tkz}
+
+Les piles et les batteries sont des exemples de générateurs de tension.
+
+Comportement générateur : \[P_\text{reçue}=-ui=-Ei<0\] donc \(i>0\) : le générateur fournit du travail au milieu extérieur.
+
+Si \(i<0\) on a : \[P_\text{reçue}=-Ei>0\] donc comportement récepteur (il pourrait par exemple s'agir du rechargement d'une batterie).
+
+\underline{Générateur de courant} (convention générateur) :
+
+\begin{circuit}
+\draw (0,0) to[isource,i=\(i\),l_=\(\eta\),v^=\(u\)] ++(3,0);
+\end{circuit}
+
+\(\eta\) est le courant électromoteur fourni par le générateur de courant (en ampère : \(\unit{\ampere}\)).
+
+Caractéristique : \[i=\eta\]
+
+\begin{tkz}[brace/.style={thick,decorate,decoration={calligraphic brace,amplitude=7pt,raise=0.5ex}}]
+\begin{axis}[axis y line=middle, axis x line=bottom,
+xlabel={\(u\)},
+ylabel={\(i\)},
+xmin=-5,xmax=5,
+ymin=0,ymax=2,
+ymajorticks=false,
+xtick={0},
+xlabel style={at={(axis description cs:1,0)},anchor=north west}]
+\addplot[samples=1000,smooth] (x,1);
+\node[above left] at (0,1) {\(\eta\)};
+\draw[brace] (5,0.9) -- node[below=1.5ex,align=center] {comportement\\générateur} (0,0.9);
+\draw[brace] (0,0.9) -- node[below=1.5ex,align=center] {comportement\\récepteur} (-5,0.9);
+\end{axis}
+\end{tkz}
+
+\section{Simplification des circuits}
+
+\subsection{Lois d'association des dipôles}
+
+\subsubsection{Résistances}
+
+\underline{En série} : toutes les résistances sont parcourues par le même courant d'intensité \(i\).
+
+\begin{circuit}
+\draw (0,0) to[short,-*,i=\(i\)] ++(1,0) coordinate (A) -- ++(1,0) to[R,l^=\(R_1\),v_=\(u_{R_1}\)] ++(1,0) to[short,-*] ++(1,0) coordinate (A1) -- ++(1,0) to[R,l^=\(R_2\),v_=\(u_{R_2}\)] ++(1,0) to[short,-*] ++(1,0) coordinate (A2) -- ++(1,0) coordinate (B) to[open] ++(1,0) coordinate (C) -- ++(1,0) to[R,l^=\(R_n\),v_=\(u_{R_n}\)] ++(1,0) to[short,-*] ++(1,0) coordinate (An) to[short,i=\(i\)] ++(1,0);
+\draw (B) -- (C) node[midway,fill=white] {\(\ldots\)};
+\node[below] at (A) {\(A\)};
+\node[below] at (A1) {\(A_1\)};
+\node[below] at (A2) {\(A_2\)};
+\node[below] at (An) {\(A_n\)};
+\draw (0,-1) to[open,v=\(u\)] (13,-1);
+\end{circuit}
+
+Ce circuit possède l'équivalent suivant :
+
+\begin{circuit}
+\draw (0,0) to[short,-*,i=\(i\)] ++(1,0) coordinate (A) -- ++(1,0) to[R,l^=\(R_\eq\),v_=\(u\)] ++(1,0) to[short,-*] ++(1,0) coordinate (B) -- ++(1,0);
+\node[below] at (A) {\(A\)};
+\node[below] at (B) {\(B\)};
+\end{circuit}
+
+On a : \[\begin{aligned}
+u&=V_A-V_B \\
+&=\underbrace{V_A-V_{A_1}}_{u_{R_1}}+\underbrace{V_{A_1}-V_{A_2}}_{u_{R_2}}+\ldots-V_B \\
+&=\sum_ku_{R_k}.
+\end{aligned}\]
+
+C'est la loi d'additivité des tensions.
+
+D'après la loi d'Ohm, on a : \[\forall k,u_{R_k}=R_ki\quad\text{et}\quad u=R_\eq i.\]
+
+Donc \[u=\sum_kR_k i=i\sum_kR_k=R_\eq i.\] D'où \[R_\eq=\sum_kR_k.\]
+
+Donc en série, les résistances s'additionnent.
+
+\underline{En parallèle} : toutes les résistances sont soumises à la même tension \(u\).
+
+\begin{circuit}
+\draw (0,0) to[short,i=\(i\),-*] ++(1,0) node[below left] {\(N\)} to[open] ++(3,0) -- ++(1,0);
+\draw (1,3) to[R,*-,l^=\(R_1\),i>^=\(i_1\)] ++(3,0);
+\draw (1,1.5) to[R,*-,l^=\(R_2\),i>^=\(i_2\)] ++(3,0);
+\draw (1,-1.5) to[R,v_=\(u\),*-,l^=\(R_n\),i>^=\(i_n\)] ++(3,0);
+\draw (1,3) -- (1,-1.5);
+\draw (4,3) -- (4,-1.5);
+\node at (2.5,0.25) {\(\vdots\)};
+\end{circuit}
+
+Ce circuit possède l'équivalent suivant :
+
+\begin{circuit}
+\draw (0,0) to[R,l^=\(R_\eq\),i>^=\(i\),v=\(u\)] ++(3,0);
+\end{circuit}
+
+On applique la loi des nœuds en \(N\) : \[\begin{aligned}
+\sum_k\epsilon_ki_k=0&\iff i-i_1-i_2-\ldots-i_n=0 \\
+&\iff i=\sum_ki_k.
+\end{aligned}\]
+
+D'après la loi d'Ohm, on a : \[i_k=\dfrac{u}{R_k}\quad\text{et}\quad i=\dfrac{u}{R_\eq}.\]
+
+Donc \(\dfrac{u}{R_\eq}=\sum_k\dfrac{u}{R_k}\) donc on a : \[\dfrac{1}{R_\eq}=\sum_k\dfrac{1}{R_k}.\]
+
+Donc en parallèle, les inverses des résistances s'additionnent.
+
+Cas particulier avec deux résistances \(R_1\) et \(R_2\) : on a \[\dfrac{1}{R_\eq}=\dfrac{1}{R_1}+\dfrac{1}{R_2}=\dfrac{R_1+R_2}{R_1R_2}\] donc \[R_\eq=\dfrac{R_1R_2}{R_1+R_2}.\]
+
+\subsubsection{Condensateurs}
+
+\underline{En série} :
+
+\begin{circuit}
+\draw (0,0) to[C,i>^=\(i\),v_=\(u_1\),l^=\(C_1\)] ++(3,0) to[C,v_=\(u_2\),l^=\(C_2\)] ++(3,0) coordinate (A) -- ++(1,0) to[open] ++(1,0) coordinate (B) to[C,v_=\(u_n\),l^=\(C_n\)] ++(3,0);
+\draw (A) -- (B) node[midway,fill=white] {\(\ldots\)};
+\end{circuit}
+
+Ce circuit possède l'équivalent suivant :
+
+\begin{circuit}
+\draw (0,0) to[C,l^=\(C_\eq\),v_=\(u\),i>^=\(i\)] ++(3,0);
+\end{circuit}
+
+Par la loi d'additivité des tensions, on a : \[u=\sum_ku_k.\]
+
+D'après la caractéristique des condensateurs, on a : \[i=C_k\odv{u_k}{t}\quad\text{et}\quad i=C_\eq\odv{u}{t}.\]
+
+Or on a : \[\dfrac{i}{C_\eq}=\odv{u}{t}=\sum_k\odv{u_k}{t}=\sum_k\dfrac{i}{C_k}\] donc \[\dfrac{1}{C_\eq}=\sum_k\dfrac{1}{C_k}.\]
+
+Donc en série, les inverses des capacités s'additionnent.
+
+\underline{En parallèle} :
+
+\begin{circuit}
+\draw (0,0) to[short,i=\(i\),-*] ++(1,0) node[below left] {\(N\)} to[open] ++(3,0) -- ++(1,0);
+\draw (1,3) to[C,*-,l^=\(C_1\),i>^=\(i_1\)] ++(3,0);
+\draw (1,1.5) to[C,*-,l^=\(C_2\),i>^=\(i_2\)] ++(3,0);
+\draw (1,-1.5) to[C,v_=\(u\),*-,l^=\(C_n\),i>^=\(i_n\)] ++(3,0);
+\draw (1,3) -- (1,-1.5);
+\draw (4,3) -- (4,-1.5);
+\node at (2.5,0.25) {\(\vdots\)};
+\end{circuit}
+
+Ce circuit possède l'équivalent suivant :
+
+\begin{circuit}
+\draw (0,0) to[C,l^=\(C_\eq\),v_=\(u\),i>^=\(i\)] ++(3,0);
+\end{circuit}
+
+On applique la loi des nœuds en \(N\) : \[i=\sum_ki_k.\]
+
+D'après la caractéristique des condensateurs, on a : \[i_k=C_k\odv{u}{t}\quad\text{et}\quad i=C_\eq\odv{u}{t}.\]
+
+Donc on a : \[C_\eq\odv{u}{t}=\sum_kC_k\odv{u}{t}.\]
+
+Donc \[C_\eq=\sum_kC_k.\]
+
+Donc en parallèle, les capacités s'ajoutent.
+
+\subsubsection{Bobines}
+
+\underline{En série} :
+
+\begin{circuit}
+\draw (0,0) to[L,i>^=\(i\),v_=\(u_1\),l^=\(L_1\)] ++(3,0) to[L,v_=\(u_2\),l^=\(L_2\)] ++(3,0) coordinate (A) -- ++(1,0) to[open] ++(1,0) coordinate (B) to[L,v_=\(u_n\),l^=\(L_n\)] ++(3,0);
+\draw (A) -- (B) node[midway,fill=white] {\(\ldots\)};
+\end{circuit}
+
+Ce circuit possède l'équivalent suivant :
+
+\begin{circuit}
+\draw (0,0) to[L,l^=\(L_\eq\),v_=\(u\),i>^=\(i\)] ++(3,0);
+\end{circuit}
+
+Par la loi d'additivité des tensions, on a : \[u=\sum_ku_k.\]
+
+D'après la caractéristique des bobines, on a : \[u_k=L_k\odv{i}{t}\quad\text{et}\quad u=L_\eq\odv{i}{t}.\]
+
+Donc on a : \[L_\eq\odv{i}{t}=\sum_kL_k\odv{i}{t}.\]
+
+Donc \[L_\eq=\sum_kL_k.\]
+
+Donc en série, les inductances s'additionnent.
+
+\underline{En parallèle} :
+
+\begin{circuit}
+\draw (0,0) to[short,i=\(i\),-*] ++(1,0) node[below left] {\(N\)} to[open] ++(3,0) -- ++(1,0);
+\draw (1,3) to[L,*-,l^=\(L_1\),i>^=\(i_1\)] ++(3,0);
+\draw (1,1.5) to[L,*-,l^=\(L_2\),i>^=\(i_2\)] ++(3,0);
+\draw (1,-1.5) to[L,v_=\(u\),*-,l^=\(L_n\),i>^=\(i_n\)] ++(3,0);
+\draw (1,3) -- (1,-1.5);
+\draw (4,3) -- (4,-1.5);
+\node at (2.5,0.25) {\(\vdots\)};
+\end{circuit}
+
+Ce circuit possède l'équivalent suivant :
+
+\begin{circuit}
+\draw (0,0) to[L,l^=\(L_\eq\),v_=\(u\),i>^=\(i\)] ++(3,0);
+\end{circuit}
+
+On applique la loi des nœuds en \(N\) : \[i=\sum_ki_k.\]
+
+D'après la caractéristique des bobines, on a : \[u=L_k\odv{i_k}{t}\quad\text{et}\quad u=L_\eq\odv{i}{t}.\]
+
+Donc on a : \[\dfrac{u}{L_\eq}=\odv{i}{t}=\sum_k\odv{i_k}{t}=\sum_k\dfrac{u}{L_k}.\]
+
+Donc \[\dfrac{1}{L_\eq}=\sum_k\dfrac{1}{L_k}.\]
+
+Donc en parallèle, les inverses des inductances s'additionnent.
+
+\subsection{Pont diviseur de tension}
+
+On considère le circuit suivant :
+
+\begin{circuit}
+\draw (0,0) to[short,i=\(i\)] ++(2,0) to[R,l_=\(R_1\)] ++(0,-3) coordinate (A) to[R,l_=\(R_2\),v^=\(u_2\)] ++(0,-3) -- ++(-1,0) node[eground]{} -- ++(-1,0) coordinate (B);
+\draw (0,0) to[open,v=\(u_1\)] (B);
+\draw (A) to[short,i=\({i^{\,\prime}=0}\)] ++(2,0);
+\end{circuit}
+
+Ce circuit possède l'équivalent suivant :
+
+\begin{circuit}
+\draw (0,0) to[short,i=\(i\)] ++(2,0) to[R,l=\(R_1+R_2\)] ++(0,-3) -- ++(-2,0) coordinate (B);
+\draw (0,0) to[open,v=\(u_1\)] (B);
+\end{circuit}
+
+On a : \[u_1=\paren{R_1+R_2}i\quad\text{et}\quad u_2=R_2i.\] Donc \[i=\dfrac{u_1}{R_1+R_2}.\]
+
+Donc on a : \[u_2=u_1\times\dfrac{R_2}{R_1+R_2}.\]
+
+C'est la relation du pont diviseur de tension.
+
+\subsection{Pont diviseur de courant}
+
+On considère le circuit suivant :
+
+\begin{circuit}
+\draw (0,0) to[short,i=\(i\),-*] ++(2,0) coordinate (A) -- ++(2,0) to[R,l=\(R_2\),i>^=\(i_2\)] ++(0,-3) -- ++(-4,0) coordinate (B);
+\draw (A) to[R,l=\(R_1\),i>^=\(i_1\),-*] ++(0,-3);
+\draw (0,0) to[open,v=\(u\)] (B);
+\end{circuit}
+
+D'après la loi d'Ohm, on a : \[i_1=\dfrac{u}{R_1}\quad\text{et}\quad i_2=\dfrac{u}{R_2}.\]
+
+Donc d'après la loi des nœuds, on a : \[i=i_1+i_2=u\paren{\dfrac{1}{R_1}+\dfrac{1}{R_2}}=u\paren{\dfrac{R_1+R_2}{R_1R_2}}.\]
+
+De plus, on a \(\dfrac{i_1}{i}=\dfrac{\dfrac{1}{R_1}}{\dfrac{R_1+R_2}{R_1R_2}}=\dfrac{R_2}{R_1+r_2}\) donc on a : \[i_1=i\times\dfrac{R_2}{R_1+R_2}.\]
+
+C'est la relation du pont diviseur de courant.
+
+\subsection{Générateur réel}
+
+En pratique, le générateur idéal n'existe pas. La caractéristique d'un générateur réel (expérimentale) est la suivante :
+
+\begin{tkz}
+\begin{axis}[axis lines=middle,
+xlabel={\(u\)},
+ylabel={\(i\)},
+xmin=-6,xmax=6,
+ymin=-5,ymax=5,
+xtick={4},
+ytick={2},
+xticklabels={\(e\)},
+yticklabels={\(\eta\)}]
+\addplot[domain=-6:6,samples=1000,smooth] {-0.5*x+2};
+\draw (2,1) -- (2,1.5) node[right] {pente : \(-r\)} -- (1,1.5);
+\end{axis}
+\end{tkz}
+
+On a : \[\begin{aligned}
+\dfrac{1}{r}&=\dfrac{\eta}{e} \\
+i&=-\dfrac{u}{r}+\eta \\
+ir&=-u+r\eta \\
+u&=r\eta-ri \\
+u&=\underbrace{e}_{\substack{\text{générateur} \\ \text{de tension}}}-\underbrace{ri}_{\text{résistance}}
+\end{aligned}\]
+
+On obtient donc deux équations équivalentes : \[u=e-ri\quad\text{et}\quad i=\eta-\dfrac{u}{r}.\]
+
+Cela nous donne l'équivalence entre les deux circuits suivants :
+
+\begin{circuit}
+\draw (0,0) to[vsource,i<=\(i\),v<=\(e\)] ++(2,0) to[R, l=\(r\)] ++(2,0) to[open] ++(2,0) to[short,i<=\(i\),-*] ++(1,0) coordinate (N);
+\draw (N) -- ++(0,1) coordinate (A) -- ++(0,-2) coordinate (B);
+\draw (A) to[isource,v^<=\(u\),l_=\(\eta\)] ++(2,0) -- ++(0,-1) coordinate (M);
+\draw (B) to[R,l=\(r\)] ++(2,0) -- ++(0,1);
+\draw (M) to[short,*-] ++(1,0);
+\draw (0,-0.75) to[open,v=\(u\)] (4,-0.75);
+\node at (2,-2) {Modélisation de Thévenin};
+\node at (8,-2) {Modélisation de Norton};
+\end{circuit}

@@ -1,0 +1,147 @@
+\chapter{Second principe de la thermodynamique}
+
+\minitoc
+
+\section{Phénomènes irréversibles}
+
+\subsection{Limites du premier principe, nécessité d'un deuxième principe}
+
+Nous avons introduit, dans l'énoncé du premier principe, les notions de transfert thermique et de travail. Nous avons pu constater que ces deux notions traduisent des transferts d'énergie et qu'a priori rien ne différencie ces deux notions, qui ont d'ailleurs la même unité.
+
+Le premier principe pour un cycle de transformations thermodynamiques s'écrit : \[\adif{U}=W+Q=0\imp Q=-W.\] \Cad qu'il semble qu'il y ait équivalence entre \(Q\) et \(W\). En particulier, le premier principe peut laisser penser que le moteur (\(W<0\)) en contact avec une seule source de chaleur (\(Q>0\)) peut exister et qu'il a un rendement égal à \(1\) puisque \(\abs{W}=\abs{Q}\). Cependant, l'expérience prouve que ce moteur n'existe pas (\cf \hyperref[chap:machinesThermiques]{chapitre sur les machines thermiques}).
+
+D'autre part, rien n'interdit dans le premier principe d'inverser le sens d'une machine thermique, \cad de pouvoir lui faire décrire un cycle dans le sens horaire ou trigonométrique : autrement dit, d'après le premier principe, il serait par exemple possible d'utiliser un réfrigérateur pour faire avancer une voiture !
+
+Cet exemple du fonctionnement d'une machine thermique est tout à fait représentatif du rôle du premier principe : il nous permet de faire des bilans d'énergie au cours de diverses transformations d'un système, mais il ne nous renseigne pas du tout sur le sens naturel de ces transformations. Ces transformations sont dites irréversibles et l'expérience prouve l'existence d'un sens unique d'évolution et donc l'impossibilité des transformations inverses.
+
+Ainsi, le premier principe est insuffisant pour expliquer ces phénomènes et étudier la notion d'irréversibilité.
+
+\subsection{Les principales causes d'irréversibilité}
+
+\subsubsection{Sens naturel ou spontané des transformations}
+
+Certains phénomènes naturels sont irréversibles car ils tendent à réuniformiser une distribution non homogène (concentration de matière, température, concentration de charges, etc...).
+
+\underline{Non homogénéité de concentration : transfert de particules.}
+
+Un flacon de parfum ouvert à l'air libre laisse s'évader une odeur se répandant dans tout l'espace environnant : des molécules odorantes se sont déplacées de la solution (zone de forte concentration) vers l'air extérieur (zone de faible concentration). Si l'on considère le système global \guillemets{parfum + air extérieur}, la transformation spontanée tend à l'uniformiser.
+
+\underline{Non homogénéité de température : transfert thermique.}
+
+Une casserole d'eau chaude laissée à l'air libre se refroidit : de l'énergie thermique se perd par rayonnement, par conduction (à travers le support matériel), et par convection (l'air chaud au contact de la casserole a tendance à se déplacer vers des régions plus froides). Pour le système global \guillemets{casserole d'eau chaude + air extérieur}, le transfert thermique se fait spontanément du corps chaud vers le corps froid, et tend à réuniformiser la température.
+
+Dans les deux cas présentés, l'évolution spontanée inverse ramenant le système à son état initial n'est jamais observée. En conclusion, ces transformations constituent des processus irréversibles. On peut remarquer que cela revient à faire intervenir le temps comme nouveau paramètre : l'évolution d'un système isolé est associée au sens d'écoulement du temps, encore dit flèche du temps.
+
+\subsubsection{Frottements solides et frottements fluides}
+
+Les forces de frottement sont des causes d'irréversibilité car elles sont toujours résistives donc dissipatives.
+
+Le frottement fluide se définit en mécanique par une force proportionnelle et opposée à la vitesse, donc il intervient quel que soit le sens du mouvement mais on peut le rendre quasi négligeable si l'on effectue un déplacement infiniment lent.
+
+Par contre, le frottement solide est proportionnel au déplacement et indépendant de la vitesse. Par conséquent, il est toujours créateur d'une force résistive quels que soient le sens et la vitesse du mouvement. Pour le minimiser, on peut lubrifier les surfaces en regard, mais on ne peut l'annuler.
+
+Remarque : l'effet Joule est lui aussi toujours dissipatif. L'énergie est toujours dissipée, quel que soit le sens du courant. On peut l'interpréter par une force de frottement fluide, traduisant le freinage ressenti par les porteurs de charge.
+
+\subsection{Réversibilité, irréversibilité}
+
+Les transformations réversibles ont déjà été évoquées dans le \hyperref[chap:premierPrincipe]{chapitre sur le premier principe}, mais c'est grâce au deuxième principe que cette notion peut être développée.
+
+Une transformation est dite réversible si une modification infiniment petite des paramètres extérieurs permet d'en inverser le sens.
+
+Une transformation réelle est en général non-réversible, mais on peut parfois réaliser des transformations réelles dont les états successifs sont très voisins d'une transformation réversible qui apparaît comme une transformation idéale limite.
+
+Mais pourquoi s'intéresse-t-on à des transformations réversibles ? Tout d'abord, pour une machine fonctionnant avec de telles transformations qui sont idéales, les pertes sont minimisées et le rendement augmenté. D'autre part, on a vu dans le \hyperref[chap:premierPrincipe]{chapitre sur le premier principe} qu'il est souvent plus aisé de calculer les échanges d'énergie lorsque la transformation est réversible.
+
+Ainsi, il arrive bien souvent que l'on fasse l'hypothèse qu'une machine est réversible sachant qu'alors, le rendement calculé est maximal (\cf \hyperref[chap:machinesThermiques]{chapitre sur les machines thermiques}). Le rendement réel est toujours inférieur au rendement calculé dans le cas réversible.
+
+\section{Second principe de la thermodynamique}
+
+\subsection{Énoncé}
+
+Rappel : le premier principe \(\adif{U}=W+Q\) a permis de faire des bilans d'énergie. C'est un principe de conservation.
+
+Problème : il ne nous dit pas si une transformation est possible ou non (sens d'évolution).
+
+On introduit donc une nouvelle grandeur non-conservative, l'entropie, notée \(S\) et telle que : \[\adif{S}=S_e+S_c\] de manière à avoir \(\adif{S}=S_c\) si le système est isolé.
+
+Dans le cas d'une transformation réversible, on a \(S_c=0\). Sinon, on a \(S_c>0\).
+
+Énoncé : pour tout système thermodynamique fermé, on peut définir une fonction d'état extensive notée \(S\) et appelée entropie, et telle que : \begin{itemize}
+\item au cours d'une transformation adiabatique, \(S\) ne peut qu'augmenter (\(\adif{S}\geq0\)) ;
+\item au cours d'une transformation quelconque, on a la variation d'entropie \(\adif{S}=S_e+S_c\) où \(S_e\) est l'entropie échangée et \(S_c\geq0\) est l'entropie créée. \\
+\end{itemize}
+
+Ce principe est un principe d'évolution.
+
+\subsection{Conséquences immédiates}
+
+Le travail \(W\) n'a aucune conséquence immédiate sur l'entropie.
+
+Remarque : de même qu'on a, pour le premier principe : \[\adif{U}=W+Q\ssi\odif{U}=\fdif{W}+\fdif{Q}\] on a, pour le second principe : \[\adif{S}=S_e+S_c\ssi\odif{S}=\fdif{S_e}+\fdif{S_c}.\]
+
+\(S\) est une fonction d'état et \(\adif{S}\) ne dépend pas du chemin suivi, là où \(S_e\) et \(S_c\) ne sont pas des fonctions d'état et dépendent donc du chemin suivi.
+
+Dans le cas d'une évolution quelconque, on a \(S_e\supinf0\) et \(S_c\geq0\) donc on a : \[\adif{S}\supinf0.\]
+
+Si on considère une transformation d'un état 1 vers un état 2 réversible et adiabatique et ensuite une transformation de l'état 2 vers l'état 1 réversible et adiabatique, on a : \[\adif{S}=S_1-S_2=S_c=0\quad\text{et}\quad\adif{S}=S_2-S_1=S_c=0\] donc \(\adif{S}=0\). On parle de transformation isentropique.
+
+Au cours d'une transformation adiabatique et non-réversible, on a : \[\adif{S}=S_c>0.\] Donc l'entropie ne peut qu'augmenter et l'état d'équilibre correspond à l'entropie maximale \(S_\maxi\).
+
+\subsection{Température et pression thermodynamiques}
+
+\subsubsection{Première identité thermodynamique}
+
+\(S\) est une fonction d'état donc dépend des paramètres d'état \(\paren{P,V,T,\dots}\).
+
+Donc l'énergie interne \(U\) peut-être décrite à partir de \(\paren{T,V}\) mais aussi de \(\paren{S,V}\).
+
+On aurait donc : \[\odif{U}=\pdv{U}{S}_V\odif{S}+\pdv{U}{V}_S\odif{V}.\]
+
+On définit la température et la pression thermodynamiques : \[P=-\pdv{U}{V}_S\quad\text{et}\quad T=\pdv{U}{S}_V\]
+
+On obtient la première identité thermodynamique : \[\odif{U}=-P\odif{V}+T\odif{S}.\]
+
+On repart du premier principe : \[\begin{aligned}
+\adif{U}&=W+Q \\
+\odif{U}&=\fdif{W}+\fdif{Q} \\
+\odif{U}&=-P_\ext\odif{V}+\fdif{Q}
+\end{aligned}\]
+
+Lors d'une transformation réversible, on a \(P=P_\ext\) et on obtient \(\fdif{Q}=T\odif{S}\) donc : \[\odif{S}=\dfrac{\fdif{Q}}{T}.\] On obtient aussi \(S:\unit{\joule\per\kelvin}\).
+
+\subsubsection{Deuxième identité thermodynamique}
+
+On a : \[\begin{WithArrows}
+H&=U+PV \Arrow{\(\dif\)} \\
+\odif{H}&=\odif{U}+V\odif{P}+P\odif{V} \\
+&=-P\odif{V}+T\odif{S}+V\odif{P}+P\odif{V} \\
+&=V\odif{P}+T\odif{S}
+\end{WithArrows}\] C'est la deuxième identité thermodynamique.
+
+\subsection{Cas d'une transformation réversible}
+
+On a : \[\begin{WithArrows}
+\odif{S}&=\dfrac{\fdif{Q}}{T} \Arrow{\(\int\)} \\
+\adif{S}&=\int\dfrac{\fdif{Q}}{T}
+\end{WithArrows}\]
+
+Donc un transfert thermique \(Q\), même effectué réversiblement, peut faire varier l'entropie.
+
+\subsection{Transformation monotherme}
+
+\subsubsection{Notion de thermostat}
+
+Un thermostat est un système thermodynamique ne pouvant échanger de l'énergie que sous forme de transfert thermique.
+
+\begin{tkz}
+\draw (0,0) node {Thermostat} circle (3);
+\node at (0,-1) {\(T_\ther\)};
+\draw[decoration={markings,mark=at position 0.5 with {\arrow{<}}},postaction={decorate}] (3,0) -- (6,0);
+\draw[decoration={markings,mark=at position 0.5 with {\arrow{<}}},postaction={decorate}] (-3,0) -- (-6,0);
+\node[above right] at (4.5,0) {\(Q\)};
+\node[above] at (-4.5,0) {\(W=0\)};
+\end{tkz}
+
+De plus, on a \(T_\ther=\cte\).
+
+\note{À FINIR}
