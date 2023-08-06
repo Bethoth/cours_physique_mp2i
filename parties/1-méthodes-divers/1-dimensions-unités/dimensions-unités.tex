@@ -1,0 +1,116 @@
+\chapter{Dimensions et unités}
+
+\minitoc
+
+\section{Dimension d'une grandeur physique}
+
+\subsection{Définition}
+
+La dimension d'une grandeur physique traduit la nature physique de cette grandeur.
+
+Deux grandeurs de même dimension sont dites homogènes. Si elles sont homogènes, elles peuvent être comparées.
+
+Par exemple : \begin{itemize}
+\item \(v_1=\SI{10}{\meter\per\second}\) et \(v_2=\SI{30}{\meter\per\second}\) sont des vitesses. Elles sont homogènes. On peut donc écrire \(v_2>v_1\) et \(v_2=3v_1\).
+\item \(m=\SI{1000}{\kilo\gram}\) est une masse donc elle n'est pas homogène avec \(v_1\). On ne peut donc pas écrire \(m>v_1\).
+\end{itemize}
+
+\subsection{Les sept dimensions fondamentales}
+
+Il existe sept dimensions fondamentales indépendantes :
+
+\begin{center}
+\begin{Tabular}[2]{c|c|c}
+Dimension & Symbole & Unité \\
+\hline
+Longueur & \(\unit{\Longueur}\) & mètre (\(\unit{\metre}\)) \\
+Temps & \(\unit{\Temps}\) & seconde (\(\unit{\second}\)) \\
+Masse & \(\unit{\Masse}\) & kilogramme (\(\unit{\kilo\gram}\)) \\
+Température & \(\unit{\Temperature}\) & kelvin (\(\unit{\kelvin}\)) \\
+Intensité électrique & \(\unit{\IntensiteElec}\) & ampère (\(\unit{\ampere}\)) \\
+Quantité de matière & \(\unit{\Quantite}\) & mole (\(\unit{\mole}\)) \\
+Intensité lumineuse & \(\unit{\IntensiteLumi}\) & candela (\(\unit{\candela}\))
+\end{Tabular}
+\end{center}
+
+Toutes les autres dimensions se déduisent des sept dimensions fondamentales.
+
+Exemples : \begin{itemize}
+\item on a \(\text{vitesse}=\dfrac{\text{distance}}{\text{temps}}\) donc vitesse : \(\unit{\Longueur\per\Temps}\) ; \\
+
+\item d'après la deuxième loi de Newton, on a \(\sum\vec{F}=m\vec{a}\). Or \(m:\unit{\Masse}\) et \(a:\unit{\Longueur\per\Temps\squared}\) donc \(F:\unit{\Masse\Longueur\per\Temps\squared}\). \\
+
+\item Déterminons la dimension de la tension électrique.
+
+On a \(U=RI\) (loi d'Ohm) mais on ne connaît pas la dimension de \(R\) donc elle est inutile. On a aussi la puissance électrique \(P=UI\).
+
+Or \(E=P\adif{t}\) et \(E=\dfrac{1}{2}mv^2\) donc \(E:\unit{\Masse\Longueur\squared\per\Temps\squared}\).
+
+Donc \(P=\dfrac{E}{\adif{t}}:\dfrac{\unit{\Masse\Longueur\squared\per\Temps\squared}}{\unit{\Temps}}=\unit{\Masse\Longueur\squared\per\Temps\cubed}\).
+
+Donc \(U=\dfrac{P}{I}:\dfrac{\unit{\Masse\Longueur\squared\per\Temps\cubed}}{\unit{\IntensiteElec}}=\unit{\Masse\Longueur\squared\per\Temps\cubed\per\IntensiteElec}\).
+
+On en déduit l'unité : volt (\(\unit{\volt}=\unit{\kilo\gram\meter\squared\per\second\cubed\per\ampere}\)). \\
+\end{itemize}
+
+Un nombre (comme \(1\), \(\pi\) ou \(j\)) n'a pas de dimension.
+
+\subsection{Équations dimensionnelles}
+
+Si \(A\) est une grandeur, on note \(\croch{A}\) sa dimension.
+
+Soient \(A,B,C,D\) des grandeurs.
+
+Si \(A=B\) alors \(\croch{A}=\croch{B}\).
+
+Si \(A+B=C+D\) alors \(\croch{A}=\croch{B}=\croch{C}=\croch{D}\) : tous les termes d'une somme sont homogènes.
+
+Si \(A=BC\) alors \(\croch{A}=\croch{B}\times\croch{C}\).
+
+Par exemple, considérons l'égalité suivante : \[a=\dfrac{v^2}{R^2}\] avec \begin{description}
+\item \(a\) désignant une accélération ;
+\item \(v\) désignant une vitesse ;
+\item \(R\) désignant une distance. \\
+\end{description}
+
+On a : \[\croch{R}=\unit{\Longueur}\qquad\croch{v}=\unit{\Longueur\per\Temps}\qquad\croch{a}=\unit{\Longueur\per\Temps\squared}.\]
+
+On remplace : \[\croch{\dfrac{v^2}{R^2}}=\dfrac{\croch{v}^2}{\croch{R}^2}=\dfrac{\unit{\Longueur\squared\per\Temps\squared}}{\unit{\Longueur\squared}}=\unit{\per\Temps\squared}.\]
+
+Donc \(\dfrac{v^2}{R^2}\) n'est pas une accélération. Donc \(a=\dfrac{v^2}{R^2}\) est faux.
+
+Il faut donc procéder régulièrement à l'analyse dimensionnelles de ses résultats intermédiaires.
+
+\section{Les unités}
+
+\subsection{Le Système International d'unités}
+
+Le Système International d'unités donne les unités associées aux dimensions fondamentales : le mètre (\(\unit{\meter}\)), le kilogramme (\(\unit{\kilo\gram}\)), la seconde (\(\unit{\second}\)), l'ampère (\(\unit{\ampere}\)), la candela (\(\unit{\candela}\)), la mole (\(\unit{\mole}\)) et le kelvin (\(\unit{\kelvin}\)), et deux pseudo-unités sans dimension : le radian (\(\unit{\radian}\)) pour les angles et le stéradian (\(\unit{\steradian}\)) pour les angles solides.
+
+Il a été adopté en 1960.
+
+\subsection{Les étalons de mesure}
+
+Toute mesure d'une grandeur se fait en comparaison à une grandeur de référence : l'étalon.
+
+\subsubsection{L'étalon de masse}
+
+C'est un cylindre de platine iridié conservé au bureau international des poids et mesures (Saint-Cloud), jusqu'en 2019. Depuis, un kilogramme est défini en fixant certaines constantes physiques.
+
+\subsubsection{L'étalon de durée}
+
+Une seconde correspond à \(\num{9192631770}\) périodes de la transition entre deux niveaux hyperfins de l'atome de Césium 133.
+
+\subsubsection{L'étalon de longueur}
+
+Un mètre est la distance parcourue dans le vide par la lumière pendant une durée de \(\dfrac{1}{\num{299792458}}\unit{\second}\).
+
+Conséquence : \[c=\SI{299792458}{\metre\per\second}\]
+
+C'est une valeur exacte qui ne se mesure plus.
+
+\subsubsection{L'étalon de quantité de matière}
+
+Une mole est la quantité de matière contenue dans un échantillon de \(\num{6.02214076e23}\) atomes. C'est une valeur exacte qui ne se mesure plus.
+
+Avant 2019, on avait une quantité de matière étalon : un échantillon de \(\SI{12}{\gram}\) de Carbone 12.
