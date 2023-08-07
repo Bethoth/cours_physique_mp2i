@@ -2,4 +2,83 @@
 
 \minitoc
 
-\note{À VENIR}
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
+
+La notion d'atome est déjà bien établie et, grâce à diverses expériences, on connaît les constituants principaux de la matière :
+
+\begin{itemize}
+    \item Crookes et Perrin : expériences du rayonnement cathodique \(\imp\) mise en évidence des électrons ; \\
+    \item Thomson : déviation de faisceaux d'électrons dans des champs électriques et magnétiques \(\imp\) détermination du rapport \(\dfrac{q}{m_e}\) ; \\
+    \item Millikan (1909) : chute de goutelettes d'huile dans un champ électrique \(\imp\) détermination de \(q\) : \[q=-e=\SI{-1.602e-19}{\C}\qquad m_e=\SI{9.1e-31}{\kilo\gram}\]~
+    \item Chadwick et Goldstein : détermination des caractéristiques des protons et des neutrons : \[q_p=e\qquad q_n=0\qquad m_p\approx m_n\approx\num{1840}m_e=\SI{1.67e-27}{\kilo\gram}.\]
+\end{itemize}
+
+Au cours du temps, divers modèles d'atomes ont été proposés :
+
+\begin{itemize}
+    \item 1901 : Perrin propose un modèle planétaire avec un \guillemets{soleil} de charge positive autour duquel gravitent des corpuscules minuscules de charge négative ; \\
+    \item 1903 : Thomson propose un modèle globulaire : l'atome serait une sphère d'électricité positive à l'intérieur de laquelle gravitent les électrons (\guillemets{pudding} de Thomson) ; \\
+    \item 1911 : l'expérience de Rutherford (étude de la déviation de particules \(\alpha\) chargées positivement et traversant une mince feuille d'or) met en évidence le caractère lacunaire de l'atome, ce qui permet de rejeter le modèle de Thomson. Rutherford propose un modèle planétaire avec des orbites circulaires pour les électrons autour du noyau.
+\end{itemize}
+
+Ordres de grandeur des rayons : \[\text{noyau : }r\approx\SI{e-15}{\meter}\qquad\text{atome : }R\approx\SI{e-10}{\meter}.\]
+
+Problèmes rencontrés :
+
+\begin{itemize}
+    \item le modèle de Rutherford est a priori assez intéressant, mais un électron en accélération centrale doit, d'après la physique classique, émettre un spectre continu d'énergie, donc perdre de l'énergie et finir sur le noyau ! \\
+    \item tous ces modèles sont incapables de décrire de façon satisfaisante l'infiniment petit et notamment la quantification de l'énergie des atomes.
+\end{itemize}
+
+\section{Les principes de base de la mécanique quantique}
+
+\subsection{Dualité onde-corpuscule}
+
+Nous avons déjà vu au chapitre précédent que la description du comportement de la lumière peut être soit ondulatoire soit corpusculaire.
+
+En 1924, Louis de Broglie (prononcer \guillemets{de Breuil}) généralise la dualité onde-corpuscule en supposant qu'à toute particule de quantité de mouvement \(p\) est associée une onde de longueur d'onde \[\lambda=\dfrac{h}{p}\] avec \begin{description}
+    \item[] \(h=\SI{6.63e-34}{\joule\second}\) la constante de Planck ;
+    \item[] \(\lambda\) en \(\unit{\meter}\) : description ondulatoire ;
+    \item[] \(p\) en \(\unit{\kilo\gram\meter\per\second}\) : description corpusculaire. \\
+\end{description}
+
+Cette hypothèse est confirmée en 1927 par l'expérience de Davisson et Germer : ils observent la diffraction d'un faisceau d'électrons envoyé sur un cristal de nickel et le résultat est celui correspondant à la diffraction d'une onde électromagnétique de longueur d'onde \(\lambda\) telle que \(\lambda=\nicefrac{h}{p}\) où \(p\) est la quantité de mouvement des électrons incidents. Ceci signifie qu'il faut renoncer à décrire les électrons de façon classique comme des particules ordinaires.
+
+Remarque : cette dualité onde-corpuscule intervient uniquement à l'échelle atomique. Considérons par exemple un joueur de rugby (\(m\approx\SI{80}{\kilo\gram}\)) qui court à \(v=\SI{30}{\kilo\meter\per\hour}\) pour aller marquer un essai : \[\lambda=\dfrac{h}{p}=\dfrac{\num{6.63e-34}}{\num{80}\times\nicefrac{\num{30}}{\num{3.6}}}\propto\SI{e-36}{\meter}.\] Il est impossible de mettre en évidence le caractère ondulatoire du joueur mais l'adversaire qui est en face a de grandes chances de ressentir l'effet corpusculaire...
+
+\subsection{Principe d'incertitude de Heisenberg (1927)}
+
+En mécanique quantique, la notion de trajectoire n'a plus de sens puisque la notion de particule a elle-même perdu le sien.
+
+Une conséquence est le principe d'incertitude formulé par Heisenberg en 1927 : il est impossible de déterminer simultanément la position et la quantité de mouvement d'un corpuscule avec autant de précision qu'on le désire.
+
+Cette incertitude ne provient pas du tout d'un quelconque manque de précision d'un appareil de mesure. À l'échelle de l'atome, c'est la mesure elle-même qui perturbe le système, d'où l'incertitude.
+
+On a, en 1D : \[\adif{x}\adif{p_x}\geq\hbar\] avec \begin{description}
+    \item[] \(\adif{x}\) : incertitude sur la position de la particule ;
+    \item[] \(\adif{p_x}\) : incertitude sur la quantité de mouvement de la particule ;
+    \item[] \(\hbar=\dfrac{h}{2\pi}\) : constante de Planck réduite. \\
+\end{description}
+
+Les deux lectures suivantes sont intéressantes : \[\adif{x}\geq\dfrac{\hbar}{\adif{p_x}}\qquad\text{ou}\qquad\adif{p_x}\geq\dfrac{\hbar}{\adif{x}}.\]
+
+De plus, on a, en 3D : \[\adif{r}\adif{p}\geq\hbar.\]
+
+\section{Fonction d'onde}
+
+En mécanique quantique, on ne peut plus parler de position ou de trajectoire. On adopte une description probabiliste à l'aide d'une fonction d'onde \(\psi\paren{x,y,z,t}\) où \(x\), \(y\) et \(z\) correspondent à la position et \(t\) au temps. On a \(\Im\psi=\C\) et \(\psi\) n'a aucune signification physique.
+
+On définit la densité de probabilité de présence par : \[\abs{\psi}^2.\]
+
+Soit \(\odif{\tau}\) un volume élémentaire (en \(\unit{\meter\cubed}\)).
+
+La probabilité élémentaire de trouver la particule quantique dans le volume \(\odif{\tau}\) est : \[\odif{P}=\abs{\psi}^2\odif{\tau}.\]
+
+Dans un volume \(V\), la probabilité de trouver la particule quantique est : \[P=\iiint_V\odif{P}=\iiint_V\abs{\psi}^2\odif{\tau}.\]
+
+On est certains de trouver la particule dans tout l'espace : \[1=\iiint_{\text{espace}}\abs{\psi}^2\odif{\tau}.\] C'est la condition de normalisation.
+
+\(\psi\) est l'analogue de la position.
+
+L'évolution de la fonction d'onde est régie par l'équation de Schrödinger (analogue du principe fondamental de la dynamique).
