@@ -227,3 +227,22 @@ Si la transformation est réversible, on a : \[\adif{S}=\dfrac{Q}{T_\ther}\] sin
 \end{tkz}
 
 Alors on a l'inégalité de Carnot-Clausius : \[\adif{S}\geq\sum_i\dfrac{Q_i}{T_{\ther\,i}}.\]
+
+\section{Applications du second principe}
+
+\subsection{Méthode}
+
+On cherche à calculer l'entropie créée \(S_c\).
+
+D'après le second principe de la thermodynamique, on a : \[\begin{aligned}
+\adif{S}&=S_e+S_c \\
+\adif{S}-S_e&=S_c.
+\end{aligned}\]
+
+Pour \(S_e\), s'il y a échange de transfert thermique avec un thermostat, on a \(S_e=\dfrac{Q}{T_\ther}\).
+
+Il faut donc calculer \(Q\) à l'aide du premier principe de la thermodynamique : \[\begin{aligned}
+\adif{U}&=W+Q \\
+Q&=\adif{U}-W \\
+Q&=C_V\adif{T}+\int P_\ext\odif{V}.
+\end{aligned}\]
