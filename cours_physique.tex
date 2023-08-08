@@ -468,6 +468,14 @@ pdfauthor=Romain Bricout
 
 \usepackage{microtype}
 
+\usepackage[Smaller,makeroom]{cancel}
+
+\usepackage{xpatch}
+
+\makeatletter
+\xpatchcmd{\canto@vector}{\vector}{\line}{}{}
+\makeatother
+
 \begin{document}
 \renewcommand{\labelitemi}{\(\bullet\)}
 \renewcommand{\labelenumi}{(\arabic{enumi})}

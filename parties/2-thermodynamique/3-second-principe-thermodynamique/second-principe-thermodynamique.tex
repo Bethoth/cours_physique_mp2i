@@ -144,4 +144,86 @@ Un thermostat est un système thermodynamique ne pouvant échanger de l'énergie
 
 De plus, on a \(T_\ther=\cte\).
 
-\note{À FINIR}
+On considère un thermostat à la température \(T_\ther\) et de capacité terhmique \(C_\ther\).
+
+D'après le premier principe de la thermodynamique, on a : \[\begin{aligned}
+\odif{U_\ther}&=\cancelto{0}{\fdif{W}}+\fdif{Q} \\
+&=C_\ther\odif{T_\ther}.
+\end{aligned}\]
+
+Donc \(C_\ther\odif{T_\ther}=\fdif{Q}\).
+
+On veut que \(\odif{T_\ther}=0\) et \(\fdif{Q}\not=0\) donc \(C_\ther\to\infty\).
+
+En pratique, un thermostat est réalisé avec un gros système comme l'air d'une pièce ou la mer.
+
+\begin{tkz}
+\draw (0,0) node {Système \(\Sigma\)} circle (2);
+\draw[decoration={markings,mark=at position 0.5 with {\arrow{<}}},postaction={decorate}] (2,0) -- (4,0);
+\draw[decoration={markings,mark=at position 0.5 with {\arrow{<}}},postaction={decorate}] (-1.5,0) -- (-3.5,0);
+\draw (5,2) arc (90:270:1 and 2);
+\node at (5,.5) {Source de};
+\node at (5,-.5) {travail};
+\draw (-2,2) -- (-6,2) -- (-6,-2) -- (-2,-2) -- cycle;
+\node[above] at (-2.5,0) {\(Q\)};
+\node at (-4,1) {Thermostat};
+\node at (-4,-1) {\(T_\ther\)};
+\node at (0,-3) {Évolution monotherme};
+\end{tkz}
+
+On a \(Q_\ther=-Q\).
+
+D'après le premier principe de la thermodynamique appliqué au thermostat, on a : \[\begin{aligned}
+\odif{U_\ther}&=\fdif{Q_\ther}+\fdif{W_\ther} \\
+&=-\fdif{Q}.
+\end{aligned}\]
+
+D'après la première identité thermodynamique appliquée au thermostat, on a : \[\odif{U_\ther}=\cancelto{0}{-P_\ther\odif{V_\ther}}+T_\ther\odif{S_\ther}.\]
+
+Donc : \[\begin{WithArrows}
+T_\ther\odif{S_\ther}&=-\fdif{Q} \\
+\odif{S_\ther}&=-\dfrac{\fdif{Q}}{T_\ther} \Arrow{\(\int\)} \\
+\adif{S_\ther}&=-\dfrac{1}{T_\ther}\int\fdif{Q} \\
+\adif{S_\ther}&=-\dfrac{Q}{T_\ther}.
+\end{WithArrows}\]
+
+\subsubsection{Bilan entropique}
+
+D'après le second principe de la thermodynamique appliqué à \(\Sigma\), on a : \[\odif{S}=\fdif{S_e}+\fdif{S_c}.\]
+
+Or \(\fdif{S_e}=\dfrac{\fdif{Q}}{T_\ther}\) et \(\fdif{S_c}\geq0\).
+
+On a donc la relation de Carnot-Clausius : \[\begin{WithArrows}
+\odif{S}&\geq\dfrac{\fdif{Q}}{T_\ther} \Arrow{\(\int\)} \\
+\adif{S}&\geq\dfrac{Q}{T_\ther}.
+\end{WithArrows}\]
+
+Si la transformation est réversible, on a : \[\adif{S}=\dfrac{Q}{T_\ther}\] sinon : \[\adif{S}>\dfrac{Q}{T_\ther}.\]
+
+\underline{Évolution polytherme :}
+
+\(\Sigma\) échange du transfert thermique avec plusieurs thermostats à différentes températures :
+
+\begin{tkz}
+\draw (0,0) node {\(\Sigma\)} circle (1);
+
+\draw (-3,1.5) arc (225:405:1);
+\node[below right] at (-2.5,2.5) {\(T_{\ther\,1}\)};
+\draw[decoration={markings,mark=at position 0.5 with {\arrow{<}}},postaction={decorate}] (-0.70710678118,0.70710678118) -- (-1.55,1.55);
+\node[above right] at (-1.12855339059,1.12855339059) {\(Q_1\)};
+
+\draw (-3,-1.5) arc (135:-45:1);
+\node[above right] at (-2.5,-2.5) {\(T_{\ther\,2}\)};
+\draw[decoration={markings,mark=at position 0.5 with {\arrow{<}}},postaction={decorate}] (-0.70710678118,-0.70710678118) -- (-1.55,-1.55);
+\node[below right] at (-1.12855339059,-1.12855339059) {\(Q_2\)};
+
+\draw (3,-1.5) arc (45:225:1);
+\node[above left] at (2.5,-2.5) {\(T_{\ther\,3}\)};
+\draw[decoration={markings,mark=at position 0.5 with {\arrow{<}}},postaction={decorate}] (0.70710678118,-0.70710678118) -- (1.55,-1.55);
+\node[below left] at (1.12855339059,-1.12855339059) {\(Q_3\)};
+
+\draw[decoration={markings,mark=at position 0.5 with {\arrow{<}}},postaction={decorate}] (0.70710678118,0.70710678118) -- (1.55,1.55);
+\node[above left] at (1.12855339059,1.12855339059) {\(W\)};
+\end{tkz}
+
+Alors on a l'inégalité de Carnot-Clausius : \[\adif{S}\geq\sum_i\dfrac{Q_i}{T_{\ther\,i}}.\]
